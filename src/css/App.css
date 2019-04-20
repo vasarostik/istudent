@@ -74,3 +74,54 @@
   align-self:center;
   top:77vh;
 }
+
+.studentButton{
+  height:8vmin;
+  width:22vmin;
+  border:0px;
+  font-size:3.5vmin;
+  color:#fff;
+  box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+  background-color:#78cc1f;
+}
+
+.companyButton{
+  height:8vmin;
+  width:22vmin;
+  border:0px;
+  font-size:3.5vmin;
+  color:#fff;
+  box-shadow: rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+  background-color: #404040;
+}
+
+@media only screen and (max-width: 700px) {
+  
+  .buttons {
+    position:relative;
+    align-self:center;
+    top:60vmin;
+  }
+  
+
+  .studentButton{
+    height:10vh;
+    width:50vw;
+    border:0px;
+    font-size:5vmin;
+    color:#fff;
+    box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+    background-color:#78cc1f;
+  }
+  
+  .companyButton{
+    height:10vh;
+    width:50vw;
+    border:0px;
+    font-size:5vmin;
+    color:#fff;
+    box-shadow: rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+    background-color: #404040;
+  }
+
+}
