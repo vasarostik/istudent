@@ -15,7 +15,6 @@ class App extends Component {
           <div className="topic">
 
             <h2 className="leftTitle">
-
               For both IT Company and
             </h2>
 

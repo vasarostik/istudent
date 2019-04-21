@@ -20,21 +20,21 @@ export class NavbarPage extends Component {
         <MDBNavbarToggler className="navButton" onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
 
-          <MDBNavbarNav left>
+          <MDBNavbarNav className="leftNav" left>
             <MDBNavItem active>
               <MDBNavLink className="link" to="#!"> <span>How to start?</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem >
               <MDBNavLink className="link" to="#!"><span>About us</span></MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className="notLink" to="#!"><span className="hideBlocks">IT Company</span></MDBNavLink>
+            <MDBNavItem className="cont comp hideBlock">
+              <h5 className="staticNav t-comp">IT Company</h5>
             </MDBNavItem>
           </MDBNavbarNav>
 
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBNavLink className="notLink" to="#!"><span className="hideBlocks">Student</span></MDBNavLink>
+          <MDBNavbarNav className="rightNav" right>
+            <MDBNavItem className="cont stud hideBlock">
+              <h5 className="staticNav t-stud">Student</h5>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="link" to="#!"><span>Login</span></MDBNavLink>

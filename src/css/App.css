@@ -22,7 +22,7 @@
   float:left;
   padding-top: 3vmin;
   grid-area: leftTitle;
-  padding-left:15vmin;
+  padding-left:18vmin;
   font-size: 4vmin;
   font-weight: 740;
   z-index: 5;
@@ -66,7 +66,7 @@
 .pTitle {
   grid-area: pTitle;
   font-size: 3.5vmin;
-  padding-left:19vmin;
+  padding-left:22vmin;
 }
 
 .buttons {
@@ -98,7 +98,7 @@
 }
 
 @media only screen and (max-width: 767.9px)  {
-  
+
   .main {
     min-height: 93vh;
   }
@@ -120,7 +120,7 @@
     box-shadow: rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
     background-color: #404040;
   }
-
+  
   .studentButton{
     float:right;
     height:10vh;
@@ -155,8 +155,8 @@
     min-height: 90.5vmax;
   }
 }
-@media only screen and (max-height: 569px) and (max-width: 768px) {
+@media only screen and (max-height: 569px) and (max-width: 767.9px) {
   .main {
     min-height: 89.5vmax;
   }
-}
+} 
