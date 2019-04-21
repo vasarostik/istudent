@@ -1,40 +1,21 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import { Header } from "./components/Header";
+import { NavbarPage } from "./components/NavbarPage";
 
 class App extends Component {
-  
+
   render() {
-
-    const companyButton = {
-      height:'8vmin',
-      width:'22vmin',
-      border: '0px',
-      fontSize:'3.5vmin',
-      color: '#fff',
-      boxShadow: 'rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px',
-      backgroundColor: '#404040'
-    };
-
-    const studentButton = {
-      height:'8vmin',
-      width:'22vmin',
-      border: '0px',
-      fontSize:'3.5vmin',
-      color: '#fff',
-      boxShadow: 'rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px',
-      backgroundColor: '#78cc1f'
-    };
-
     return (
       <div className="App">
+        <NavbarPage />
 
         {/* main container */}
         <div className="main">
-          <Header />
+
           <div className="topic">
 
             <h2 className="leftTitle">
+
               For both IT Company and
             </h2>
 
@@ -54,8 +35,8 @@ class App extends Component {
             </p>
           </div>
           <div className="buttons">
-            <button style={companyButton}>Company</button>
-            <button style={studentButton}>Student</button>
+            <button className="companyButton">Company</button>
+            <button className="studentButton">Student</button>
           </div>
         </div>
         {/* end of main container */}

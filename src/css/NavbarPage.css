@@ -1,0 +1,72 @@
+.nav{
+    background-color:#fff;
+    position: fixed;
+    top:0;
+    width: 76vw;
+    height: 10vh;
+    margin: 0px 12vw;
+    border-radius: 0 0 17px 17px;
+    z-index:100;
+
+}
+
+.link{
+    margin: 0 2.5vw;
+    white-space: nowrap;
+}
+
+.link:hover{
+    background-color:#78cc1f; 
+}
+
+.mobileMenu{
+    display: none;
+}
+
+.link span{
+    color:#000;
+    font-size: 1.2vw;
+}
+
+.navName{
+    color:#000;
+    font-size: 5vmin;
+    margin-left: 7vw; 
+    display: none; 
+}
+
+.navButton{
+    background-color:#78cc1f;
+    border:0px;
+    border-radius:0px;
+    height:60px;
+    width:75px;
+    margin-top:0vh;
+    margin-left:4vw;
+}
+
+@media only screen and (max-width: 700px) {
+    .nav{
+        background-color:#fff;
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        border-radius: 0px;
+        z-index:100;
+    }
+
+    .navName{
+        display: block;
+    }
+
+    .mobileMenu{
+        display: block;
+    }
+
+    .link span{
+        color:#000;
+        font-size: 5vw;
+        margin-left:9vw;
+    }
+}
