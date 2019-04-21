@@ -15,9 +15,8 @@ export class NavbarPage extends Component {
 
     return (
       <MDBNavbar className="nav" dark expand="md" style={{ padding: 0 }}>
-        <MDBNavbarBrand>
-          <strong className="navName">IstudenT</strong>
-        </MDBNavbarBrand>
+        <strong className="navName">IstudenT</strong>
+
         <MDBNavbarToggler className="navButton" onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
 
@@ -25,17 +24,17 @@ export class NavbarPage extends Component {
             <MDBNavItem active>
               <MDBNavLink className="link" to="#!"> <span>How to start?</span></MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
+            <MDBNavItem >
               <MDBNavLink className="link" to="#!"><span>About us</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="link" to="#!"><span>IT Company</span></MDBNavLink>
+              <MDBNavLink className="notLink" to="#!"><span className="hideBlocks">IT Company</span></MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
 
           <MDBNavbarNav right>
             <MDBNavItem>
-              <MDBNavLink className="link" to="#!"><span>Student</span></MDBNavLink>
+              <MDBNavLink className="notLink" to="#!"><span className="hideBlocks">Student</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="link" to="#!"><span>Login</span></MDBNavLink>
