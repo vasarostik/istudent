@@ -10,7 +10,16 @@
 }
 
 .link{
-    margin: 0 2.5vw;
+    margin: 0 2vw;
+    white-space: nowrap;
+}
+
+.notLink{
+    color:#000;
+    background-color: #78cc1f;
+    height:9vh;
+    width:8vw;
+    margin: 0 2vw;
     white-space: nowrap;
 }
 
@@ -23,14 +32,59 @@
     font-size: 1.2vw;
 }
 
-.navName{
-    color:#000;
-    font-size: 5vmin;
-    margin-left: 7vw; 
+.notLink span{
+    color:#fff;
+    font-size: 1.2vw;
+}
+
+.navName{ 
     display: none; 
 }
 
+/*
+
+.blockRectangle{
+    margin: 0 2.5vw;
+    font-size: 1.3vw;
+    font-style: bold;
+    white-space: nowrap;
+    z-index:100;
+}
+
+.rectangleCompany{
+    position:absolute;
+    top:0;
+    height: 10vh;
+    width: 9vw;
+    margin-left: 2.7vmin;
+    background-color: #404040;
+    z-index: 0;
+}
+
+.rectangleStudent{
+    position:absolute;
+    top:0;
+    height: 10vh;
+    width: 9vw;
+    margin-left:0.2vw;
+    background-color: #78cc1f;
+    z-index: 0;
+} */
+
 @media only screen and (max-width: 767.9px) {
+    /*
+    .rectangleCompany {
+        display: none;
+    }
+
+    .rectangleStudent {
+        display: none;
+    }
+    */
+    .notLink{
+        display: none;
+    }
+
     .nav{
         background-color:#fff;
         position: relative;
@@ -42,7 +96,14 @@
     }
 
     .navName{
+        color:#000;
+        font-size: 5vmin;
+        margin-left: 7vw;
         display: block;
+    }
+
+    .hideBlocks{
+        display:none;
     }
 
     .link{
