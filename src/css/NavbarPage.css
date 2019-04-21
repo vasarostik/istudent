@@ -7,7 +7,6 @@
     margin: 0px 12vw;
     border-radius: 0 0 17px 17px;
     z-index:100;
-
 }
 
 .link{
@@ -17,10 +16,6 @@
 
 .link:hover{
     background-color:#78cc1f; 
-}
-
-.mobileMenu{
-    display: none;
 }
 
 .link span{
@@ -35,17 +30,7 @@
     display: none; 
 }
 
-.navButton{
-    background-color:#78cc1f;
-    border:0px;
-    border-radius:0px;
-    height:60px;
-    width:75px;
-    margin-top:0vh;
-    margin-left:4vw;
-}
-
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 767.9px) {
     .nav{
         background-color:#fff;
         position: relative;
@@ -60,13 +45,25 @@
         display: block;
     }
 
-    .mobileMenu{
-        display: block;
+    .link{
+        border-width: 0px 0px 2px 0px;
+        border-style: solid;
+        border-color: #f5f8fd;
     }
 
     .link span{
         color:#000;
-        font-size: 5vw;
+        font-size: 3vmin;
         margin-left:9vw;
+    }
+
+    .navButton{
+        background-color:#78cc1f;
+        border:0px;
+        border-radius:0px;
+        height:60px;
+        width:75px;
+        margin-top:0vh;
+        margin-left:4vw;
     }
 }

@@ -73,6 +73,8 @@
   position:absolute;
   align-self:center;
   top:77vh;
+  flex-direction: row;
+  display:inline;
 }
 
 .studentButton{
@@ -95,26 +97,21 @@
   background-color: #404040;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 767.9px)  {
   
-  .buttons {
-    position:relative;
-    align-self:center;
-    top:60vmin;
+  .main {
+    min-height: 93vh;
   }
-  
 
-  .studentButton{
-    height:10vh;
-    width:50vw;
-    border:0px;
-    font-size:5vmin;
-    color:#fff;
-    box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
-    background-color:#78cc1f;
+  .buttons {
+    position:absolute;
+    top:auto;
+    bottom: 0vh;
+    display:flex;
   }
   
   .companyButton{
+    float:left;
     height:10vh;
     width:50vw;
     border:0px;
@@ -124,4 +121,42 @@
     background-color: #404040;
   }
 
+  .studentButton{
+    float:right;
+    height:10vh;
+    width:50vw;
+    border:0px;
+    font-size:5vmin;
+    color:#fff;
+    box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+    background-color:#78cc1f;
+  }
+
+}
+
+/* mobile responsive buttons */
+@media only screen and (max-height: 830px) and (max-width: 767.9px) {
+  .main {
+    min-height: 92.7vmax;
+  }
+}
+@media only screen and (max-height: 737px) and (max-width: 767.9px) {
+  .main {
+    min-height: 91.7vmax;
+  }
+}
+@media only screen and (max-height: 668px) and (max-width: 767.9px) {
+  .main {
+    min-height: 91vmax;
+  }
+}
+@media only screen and (max-height: 641px) and (max-width: 767.9px) {
+  .main {
+    min-height: 90.5vmax;
+  }
+}
+@media only screen and (max-height: 569px) and (max-width: 768px) {
+  .main {
+    min-height: 89.5vmax;
+  }
 }
