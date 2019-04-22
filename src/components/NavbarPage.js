@@ -43,7 +43,7 @@ export class NavbarPage extends Component {
               <h5 className="staticNav t-stud">Student</h5>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="link" to="#!"><span>Login</span></MDBNavLink>
+              <MDBNavLink className="link" to="/01"><span>Sign in</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="link" to="#!"><span>Create account</span></MDBNavLink>

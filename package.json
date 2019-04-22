@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://jarvizzik.github.io/istudent",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "mdbreact": "^4.13.0",

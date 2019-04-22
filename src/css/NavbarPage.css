@@ -7,6 +7,7 @@
     margin: 0px 12vw;
     border-radius: 0 0 17px 17px;
     z-index:100;
+    box-shadow:none;
 }
 
 .leftNav{
@@ -77,12 +78,15 @@
     float:left;
     width:2.5vw;
     height: 5vh;
+    max-width: 100%;
+    max-height: 100%;
     margin-top: 2vh;
 }
 
 .logoTitle{
     float:right;
     width:10vw;
+    display: block;
     line-height: 7.65vh;
     margin-top: 2px;
     font-size: 2vw;
@@ -95,15 +99,37 @@
         width:84%;
         margin: 0px 8vw;
     }
+
+
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1025px) {
     .nav{
         width:100%;
         margin: 0;
     }
+
+    .logoImg{
+        margin-top: 3vh;
+        height: auto;
+    }
+
+    .logoTitle{
+        font-size: 3vw;
+    }
+    
 }
 
+@media only screen and (max-width: 1023px) {
+    .logoImg{
+        margin-top: 1.9vh;
+        height: auto;
+    }
+
+    .logoTitle{
+        font-size: 2vw;
+    }
+}
 
 @media only screen and (max-width: 767.9px) {
 
