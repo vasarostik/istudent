@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import '../css/NavbarPage.css';
+import logo from '../images/logo.png';
 
 export class NavbarPage extends Component {
   state = {
@@ -32,12 +33,17 @@ export class NavbarPage extends Component {
             </MDBNavItem>
           </MDBNavbarNav>
 
+          <MDBNavItem className="logo hideBlock">
+              <img className="logoImg" src={logo} />
+              <h5 className="logoTitle">student</h5>
+          </MDBNavItem>
+
           <MDBNavbarNav className="rightNav" right>
             <MDBNavItem className="cont stud hideBlock">
               <h5 className="staticNav t-stud">Student</h5>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="link" to="#!"><span>Login</span></MDBNavLink>
+              <MDBNavLink className="link" to="/01"><span>Sign in</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="link" to="#!"><span>Create account</span></MDBNavLink>

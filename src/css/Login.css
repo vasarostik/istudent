@@ -1,0 +1,161 @@
+.main1 {
+    position:relative;
+    background-color: #f5f8fd;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: #000;
+}
+
+.rightTitle1 {
+    position:absolute;
+    font-size: 3.6vmin;
+    font-weight: normal;    
+    top:0.3vmin;
+    margin-left:5.5vmin;
+    color: white;
+    z-index: 50;
+}
+  
+.rectangle1 {
+    position: absolute;
+    top:17vh;
+    height: 9.5vmin;
+    width: 47vmin;
+    margin-left:16vw;
+    background-color: #78cc1f;
+    box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+    z-index: 1;
+}
+  
+.emptyRectangle1 {
+    position:relative;
+    height: 10vmin;
+    width: 46vmin;
+    margin-left:-1.5vw;
+    margin-top:2.5vh;
+    border:0.8vmin solid #fff;
+    box-shadow:rgba(0, 0, 0, 0.05) -0.5vmin 0.7vmin 0.6vmin 0px;
+    z-index: 1;
+}
+
+.buttonGroup{
+    margin-top:28vh;
+    margin-left: 20vw;
+}
+
+.socialButton{
+    height:7vmin;
+    margin: 1.4vh 0;
+    width:48vmin;
+    border:0px;
+    font-size:3vmin;
+    color:#fff;
+    box-shadow: rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
+    white-space: nowrap;
+
+}
+
+.logButton{
+    height:6.5vmin;
+    width:15vmin;
+    border:0px;
+    font-size:2.7vmin;
+    color:#fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    background-color:#78cc1f;
+  }
+
+.logButton:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+}
+
+.socialButton:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+}
+
+
+@media only screen and (max-width: 767.9px) {
+    .buttonGroup{
+        margin-top:20vh;
+        margin-left: 26vw;
+    }
+
+    .rectangle1{
+        top:7vh;
+        margin-left:10vw;
+        height: 13vmin;
+        width: 62vmin;
+    }
+
+    .emptyRectangle1{
+        margin-left:-3.5vw;
+        height: 13vmin;
+        width: 60vmin;
+    }
+
+    .rightTitle1{
+        font-size: 5vmin;
+        top:1vmin;
+    }
+
+}
+
+  /* Input form */
+
+.my-form {
+    position: absolute;
+    top:15;
+    padding: 1vw;
+    width:25vw;
+    margin-left:58vw;
+    height: 30vh;
+}
+
+.my-form h4 {
+    color: #78cc1f;
+}
+
+.my-form p {
+    font-size: 1.1vw;
+    font-weight: 400;
+}
+
+.input{
+      border-radius: 0;
+}
+
+.btn {
+    background-color: #78cc1f;
+    color:white;
+    right: 0;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    color: #fff;
+}
+
+a {
+    bottom: 0;
+}
+
+.textspan{
+    font-size: 1vw;
+}
+
+.space {
+    padding-bottom: 7.6vh;
+}
+
+.forgotlink {
+    font-size: .875rem;
+    float: right;
+    color: #78cc1f;
+}
+
+.link:hover, .link:active {
+    color: #78cc1f;
+}
+ 
