@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import '../css/Main.css';
 import { MDBInput } from 'mdbreact';
-import { NavbarPage } from "./components/NavbarPage";
+import { NavbarPage } from "../components/NavbarPage";
 import { Container, Row, Col } from 'react-bootstrap';
-import {Login} from './components/Login';
+import {Login} from '../components/Login';
 
-class App extends Component {
+class Main extends Component {
 
   render() {
     return (
@@ -56,4 +56,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;

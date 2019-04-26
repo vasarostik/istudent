@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import "mdbreact/dist/css/mdb.css";
-import App from './App';
+import Main from './pages/Main';
 import {Registration} from './pages/Registration';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter,Route,Switch } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { BrowserRouter,Route,Switch } from 'react-router-dom';
 ReactDOM.render(
 <BrowserRouter>
   <Switch>
-    <Route exact path="/" component={App}/>
+    <Route exact path="/" component={Main}/>
     <Route path="/registration/student" component={Registration}/>
     <Route path="/registration/company" component={Registration}/>
     <Route path="/registration/student/profile" component={Registration}/>
