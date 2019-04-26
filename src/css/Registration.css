@@ -1,11 +1,14 @@
-.log {
+.reg {
     position:relative;
-    padding-left: 10vw;
     background-color: #f5f8fd;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 20vh;
     color: #000;
 }
 
-/*
 .rightTitle1 {
     position:absolute;
     font-size: 3.6vmin;
@@ -39,8 +42,8 @@
 }
 
 .buttonGroup{
-    margin-top:28vh;
     margin-left: 20vw;
+    padding-top: 15vh;
 }
 
 .socialButton{
@@ -54,27 +57,35 @@
     white-space: nowrap;
 
 }
-*/
 
-.logButton{
+.signup-but{
     height:5.5vmin;
-    width:12vmin;
     border:0px;
-    font-size:2vmin;
+    font-size:2.7vmin;
     color:#fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
-    background-color:#78cc1f;
-  }
+    
+}
 
-.logButton:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+.signup-but:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.cancel{
+    width:15vmin;
+    background-color: #000;
+}
+
+.sign-up{
+    width:21.24vmin;
+    background-color:#78cc1f;
 }
 
 .socialButton:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.45);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-/*
+
 @media only screen and (max-width: 767.9px) {
     .buttonGroup{
         margin-top:20vh;
@@ -100,28 +111,30 @@
     }
 
 }
-*/
+
   /* Input form */
 
-.log-form {
+.reg-form {
     position: absolute;
     top:15;
     padding: 1vw;
-    width: 22vw;
+    width:25vw;
+    margin-left:58vw;
     height: 30vh;
+    padding-top: -10vh;
 }
 
-.log-form h4 {
+.reg-form h4 {
     color: #78cc1f;
 }
 
-.log-form p {
-    font-size: 1.1vmin;
+.reg-form p {
+    font-size: 1.1vw;
     font-weight: 400;
 }
 
 .input{
-    border-radius: 0;
+      border-radius: 0;
 }
 
 .btn {
@@ -134,34 +147,26 @@
     color: #fff;
 }
 
-.log-form p{
-    font-size: 2vmin;
+a {
+    bottom: 0;
 }
 
-
 .textspan{
-    position: absolute;
-    white-space: nowrap;
-    margin-top: 7vh;
+    font-size: 1vw;
+}
+
+.space {
+    padding-bottom: 7.6vh;
+    padding-left: 2.2vw;
+    width: 20vw;
+}
+
+.forgotlink {
+    font-size: .875rem;
+    float: right;
     color: #78cc1f;
-    margin-left: 12vw;
-    font-size: 2vmin;
 }
 
 .link:hover, .link:active {
     color: #78cc1f;
 }
- 
-.md-form{
-    width: 20vw;
-}
-
-.md-form2{
-    width: 20vw;
-    padding-top: 1px;
-}
-
-.form-title{
-    padding-bottom: 4vh;
-}
-

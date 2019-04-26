@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import { MDBInput } from 'mdbreact';
 import { NavbarPage } from "./components/NavbarPage";
+import { Container, Row, Col } from 'react-bootstrap';
+import {Login} from './components/Login';
 
 class App extends Component {
 
@@ -12,30 +15,39 @@ class App extends Component {
         {/* main container */}
         <div className="main">
 
-          <div className="topic">
 
-            <h2 className="leftTitle">
-              For both IT Company and
-            </h2>
+          <Container>
+            <Row>
+              <Col sm={6}>
+                <div className="topic">
 
-            <div className="shape">
-              <div className="rectangle">
-                <div className="emptyRectangle">
-                  <h2 className="rightTitle"> Students</h2>
+                  <h2 className="leftTitle">
+                    For both IT Company and</h2>
+
+                  <div className="shape">
+                    <div className="rectangle">
+                      <div className="emptyRectangle">
+                        <h2 className="rightTitle"> Students</h2>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="pTitle">
+                    Find a job of your dream<br />
+                    in any Ukrainian's IT Company<br />
+                    or find intelligent students on your<br />
+                    successful project!</p>
                 </div>
-              </div>
-            </div>
+              </Col>
+              <Col sm={6}>
+                <Login/>
+              </Col>
+            </Row>
 
-            <p className="pTitle">
-              Find a job of your dream<br />
-              in any Ukrainian's IT Company<br />
-              or find intelligent students on your<br />
-              successful project!
-            </p>
-          </div>
+          </Container>
           <div className="buttons">
-            <button className="companyButton">Company</button>
-            <button className="studentButton">Student</button>
+            <a href="registration/company" className="but but-comp">Company</a>
+            <a href="registration/student" className="but but-stud">Student</a>
           </div>
         </div>
         {/* end of main container */}

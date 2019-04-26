@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import "mdbreact/dist/css/mdb.css";
 import App from './App';
-import {Login} from './Login';
+import {Registration} from './pages/Registration';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter,Route,Switch } from 'react-router-dom';
 
@@ -12,7 +12,10 @@ ReactDOM.render(
 <BrowserRouter>
   <Switch>
     <Route exact path="/" component={App}/>
-    <Route path="/01" component={Login}/>
+    <Route path="/registration/student" component={Registration}/>
+    <Route path="/registration/company" component={Registration}/>
+    <Route path="/registration/student/profile" component={Registration}/>
+    <Route path="/registration/company/profile" component={Registration}/>
   </Switch>
 </BrowserRouter>, document.getElementById('root'));
 

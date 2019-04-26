@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
+import { MDBNavbar, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import '../css/NavbarPage.css';
 import logo from '../images/logo.png';
 
@@ -22,7 +22,7 @@ export class NavbarPage extends Component {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
 
           <MDBNavbarNav className="leftNav" left>
-            <MDBNavItem active>
+            <MDBNavItem>
               <MDBNavLink className="link" to="#!"> <span>How to start?</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem >
@@ -43,7 +43,7 @@ export class NavbarPage extends Component {
               <h5 className="staticNav t-stud">Student</h5>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="link" to="/01"><span>Sign in</span></MDBNavLink>
+              <MDBNavLink className="link" to="#!"><span>Sign in</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="link" to="#!"><span>Create account</span></MDBNavLink>
