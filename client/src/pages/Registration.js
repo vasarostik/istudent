@@ -4,18 +4,25 @@ import '../css/Registration.css';
 import { NavbarPage } from "../components/NavbarPage";
 import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
+import { getJwt } from '../helpers/jwt';
 
 export class Registration extends Component {
+    constructor(props){
+        super(props);
 
-    state = {
-        email: '',
-        password: '',
-        confirmPassword: ''
+        this.state ={
+            email: '',
+            password: '',
+            confirmPassword: ''
+        }
     }
 
-    handleSubmit = () => {
+    handleSubmit = async (event) => {
+        event.preventDefault();
 
         const { email, password, confirmPassword } = this.state;
+
+        let registered;
 
         // perform all neccassary validations
         if (password === '') {
@@ -23,14 +30,75 @@ export class Registration extends Component {
         }
         else if (password !== confirmPassword) {
             alert("Passwords don't match");
-        } else {
-            axios.post(`http://localhost:5000/reg`, { email, password })
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
 
-                    this.props.history.push(this.props.history.location.pathname.concat('/profile'));
-                })
+        } else {
+
+            console.log('passed validation!')
+
+            let data = JSON.stringify({
+                email: email,
+                password: password
+            })
+
+            await axios.post('http://localhost:5000/reg', data, {
+
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+
+            }).then(function (response) {
+
+                console.log(response);
+                console.log(response.data);
+                console.log(response.status);
+
+                return response;
+
+            }).catch(function (error) {
+
+                console.log(error);
+
+            }).then(function (response) {
+
+                if (response !== undefined) {
+
+                    console.log('Status: ' + response.status);
+
+                    if (response.status === 201) {
+                        registered = true;
+                        console.log('success');
+                    } else {
+                        registered = false;
+                        console.log('unexpected status');
+                    }
+
+                } else {
+                    registered = false;
+                    alert('Invalid input or user with this email exists');
+                    console.log('Invalid input or user with this email exists');
+                }
+            });
+
+
+            if (registered === true) {
+
+                axios.post('http://localhost:5000/auth', data, {
+
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+
+                }).then(function (response) {
+                    localStorage.setItem('accessToken', response.data.accessToken);
+                    localStorage.setItem('refreshToken', response.data.refreshToken);
+                });
+                
+                this.props.history.push(this.props.history.location.pathname.concat('/profile'));
+            }
+
+            console.log(getJwt());
         }
 
     }
@@ -89,7 +157,7 @@ export class Registration extends Component {
                     </ListGroup>
 
                     {/*Input form */}
-                    <form className="reg-form">
+                    <form className="reg-form" onSubmit={this.handleSubmit}>
                         <h4 className="font-weight-bold mb-3">Create account</h4>
                         <p className="mdb-color-text">To sign up, please fill in these text fields</p>
 
@@ -97,10 +165,10 @@ export class Registration extends Component {
                             <MDBInput label="E-mail address" type="email" outline icon="envelope" onChange={this.handleEmail.bind(this)} required />
                         </div>
                         <div className="md-form">
-                            <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} />
+                            <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} required />
                         </div>
                         <div className="md-form">
-                            <MDBInput label="Confirm password" type="password" outline icon="fas fa-lock" onChange={this.handleConfirmPasswordChange.bind(this)} />
+                            <MDBInput label="Confirm password" type="password" outline icon="fas fa-lock" onChange={this.handleConfirmPasswordChange.bind(this)} required />
                         </div>
 
                         <div className="space">
@@ -108,7 +176,7 @@ export class Registration extends Component {
                                 <a href="/" ><button className="signup-but cancel" type="button" style={{ color: 'white' }}>Cancel</button></a>
                             </div>
                             <div className="float-right">
-                                <button className="signup-but sign-up" type="button" style={{ color: 'white' }} onClick={this.handleSubmit}>Continue</button>
+                                <button className="signup-but sign-up" type="submit" style={{ color: 'white' }}>Continue</button>
                             </div>
                         </div>
 
