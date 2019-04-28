@@ -94,6 +94,14 @@
     letter-spacing: 1px;
 }
 
+.a-logo{
+    color: #000;
+}
+
+.a-logo:hover{
+    color: #78cc1f;
+}
+
 @media only screen and (max-width: 1400px) {
     .nav{
         width:84%;

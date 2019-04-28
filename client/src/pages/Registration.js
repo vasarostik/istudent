@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { MDBInput } from 'mdbreact';
 import '../css/Registration.css';
 import { NavbarPage } from "../components/NavbarPage";
@@ -7,10 +7,10 @@ import axios from 'axios';
 import { getJwt } from '../helpers/jwt';
 
 export class Registration extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
             email: '',
             password: '',
             confirmPassword: ''
@@ -38,7 +38,7 @@ export class Registration extends Component {
             let data = JSON.stringify({
                 email: email,
                 password: password
-            })
+            });
 
             await axios.post('http://localhost:5000/reg', data, {
 
@@ -47,17 +47,12 @@ export class Registration extends Component {
                     'Content-Type': 'application/json'
                 }
 
-            }).then(function (response) {
-
-                console.log(response);
-                console.log(response.data);
-                console.log(response.status);
-
-                return response;
-
             }).catch(function (error) {
-
-                console.log(error);
+                if (error.response.status === 409) {
+                    alert('This user already exists');
+                } else {
+                    alert(error);
+                }
 
             }).then(function (response) {
 
@@ -70,13 +65,8 @@ export class Registration extends Component {
                         console.log('success');
                     } else {
                         registered = false;
-                        console.log('unexpected status');
+                        alert('This user already exists');
                     }
-
-                } else {
-                    registered = false;
-                    alert('Invalid input or user with this email exists');
-                    console.log('Invalid input or user with this email exists');
                 }
             });
 
@@ -90,12 +80,19 @@ export class Registration extends Component {
                         'Content-Type': 'application/json'
                     }
 
+                }).catch(function (error) {
+
+                    alert(error);
+                    console.log(error);
+
                 }).then(function (response) {
+
+
                     localStorage.setItem('accessToken', response.data.accessToken);
                     localStorage.setItem('refreshToken', response.data.refreshToken);
                 });
-                
-                this.props.history.push(this.props.history.location.pathname.concat('/profile'));
+
+                this.props.history.push(this.props.history.location.pathname.concat('/addInfo'));
             }
 
             console.log(getJwt());

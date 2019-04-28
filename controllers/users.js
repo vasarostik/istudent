@@ -32,8 +32,8 @@ module.exports = {
         res.status(403).send("Incorrect login or password");
       } else {
         const refreshToken = uuid();
-        res.send({
-          accessToken: jwt.sign({ userId: user.id }, config.secretKey, {expiresIn: '2h'}),
+        res.status(201).send({
+          accessToken: jwt.sign({ userId: user.id }, config.secretKey, { expiresIn: '2h' }),
           refreshToken: refreshToken
         });
       }

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import '../css/Main.css';
-import { MDBInput } from 'mdbreact';
 import { NavbarPage } from "../components/NavbarPage";
 import { Container, Row, Col } from 'react-bootstrap';
-import {Login} from '../components/Login';
+import { Login } from '../components/Login';
 
-class Main extends Component {
+export class Main extends Component {
 
   render() {
     return (
@@ -40,7 +39,7 @@ class Main extends Component {
                 </div>
               </Col>
               <Col sm={6}>
-                <Login/>
+                <Login history={this.props.history}/>
               </Col>
             </Row>
 
@@ -55,5 +54,3 @@ class Main extends Component {
     );
   }
 }
-
-export default Main;
