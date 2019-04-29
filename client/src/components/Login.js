@@ -38,11 +38,16 @@ export class Login extends Component {
 
             console.log(error);
 
-            if (error.response.status === 403) {
-                alert('Incorrect login or password');
+            if (error.response !== undefined) {
+                if (error.response.status === 403) {
+                    alert('Incorrect login or password');
+                } else {
+                    alert(error);
+                }
             } else {
                 alert(error);
             }
+
 
         }).then(function (response) {
 
@@ -94,18 +99,18 @@ export class Login extends Component {
                 <div className="log">
 
                     <form className="log-form" onSubmit={this.handleSubmit}>
-                        <h4 className="font-weight-bold mb-3 form-title">Sign in to your account</h4>
+
+                        <h4 className="font-weight-bold mb-3 form-title">Sign in</h4>
+
                         <div className="md-form">
                             <MDBInput label="E-mail address" type="email" outline icon="envelope" onChange={this.handleEmail.bind(this)} required />
-                            <label>
-                                <a href="#!"><span className="textspan">Forgot password?</span></a>
-                            </label>
                         </div>
-
-
 
                         <div className="md-form2">
                             <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} required />
+                            <label>
+                                <a href="#!"><span className="forgot-text">Forgot password?</span></a>
+                            </label>
                         </div>
 
                         <div className="float-right">

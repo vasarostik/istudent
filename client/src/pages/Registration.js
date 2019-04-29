@@ -48,8 +48,13 @@ export class Registration extends Component {
                 }
 
             }).catch(function (error) {
-                if (error.response.status === 409) {
-                    alert('This user already exists');
+
+                if (error.response !== undefined) {
+                    if (error.response.status === 409) {
+                        alert('This user already exists');
+                    } else {
+                        alert(error);
+                    }
                 } else {
                     alert(error);
                 }

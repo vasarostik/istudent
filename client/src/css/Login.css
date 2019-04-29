@@ -1,167 +1,162 @@
 .log {
     position:relative;
-    padding-left: 10vw;
-    background-color: #f5f8fd;
+    width:22vmax;
+    height:43vmin;
+    padding: 1vw;
+    margin-left: 10vw;
+    margin-top: 3vh;
+    background-color: #fff;
+    border: 2px solid #78cc1f;
     color: #000;
 }
 
-/*
-.rightTitle1 {
-    position:absolute;
-    font-size: 3.6vmin;
-    font-weight: normal;    
-    top:0.3vmin;
-    margin-left:5.5vmin;
-    color: white;
-    z-index: 50;
-}
-  
-.rectangle1 {
-    position: absolute;
-    top:17vh;
-    height: 9.5vmin;
-    width: 47vmin;
-    margin-left:16vw;
-    background-color: #78cc1f;
-    box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
-    z-index: 1;
-}
-  
-.emptyRectangle1 {
-    position:relative;
-    height: 10vmin;
-    width: 46vmin;
-    margin-left:-1.5vw;
-    margin-top:2.5vh;
-    border:0.8vmin solid #fff;
-    box-shadow:rgba(0, 0, 0, 0.05) -0.5vmin 0.7vmin 0.6vmin 0px;
-    z-index: 1;
-}
-
-.buttonGroup{
-    margin-top:28vh;
-    margin-left: 20vw;
-}
-
-.socialButton{
-    height:7vmin;
-    margin: 1.4vh 0;
-    width:48vmin;
-    border:0px;
-    font-size:3vmin;
-    color:#fff;
-    box-shadow: rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
-    white-space: nowrap;
-
-}
-*/
-
 .logButton{
     height:5.5vmin;
-    width:12vmin;
+    width:16vmax;
     border:0px;
-    font-size:2vmin;
+    margin-right:1.1vw;
+    font-size:1.2vw;
     color:#fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
     background-color:#78cc1f;
-  }
+}
 
 .logButton:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.35);
 }
 
-.socialButton:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.45);
-}
+/* Input form */
 
-/*
-@media only screen and (max-width: 767.9px) {
-    .buttonGroup{
-        margin-top:20vh;
-        margin-left: 26vw;
-    }
-
-    .rectangle1{
-        top:7vh;
-        margin-left:10vw;
-        height: 13vmin;
-        width: 62vmin;
-    }
-
-    .emptyRectangle1{
-        margin-left:-3.5vw;
-        height: 13vmin;
-        width: 60vmin;
-    }
-
-    .rightTitle1{
-        font-size: 5vmin;
-        top:1vmin;
-    }
-
-}
-*/
-  /* Input form */
-
-.log-form {
-    position: absolute;
-    top:15;
-    padding: 1vw;
-    width: 22vw;
-    height: 30vh;
-}
-
-.log-form h4 {
-    color: #78cc1f;
-}
-
-.log-form p {
-    font-size: 1.1vmin;
-    font-weight: 400;
-}
-
-.input{
-    border-radius: 0;
-}
-
-.btn {
-    background-color: #78cc1f;
-    color:white;
-    right: 0;
-}
-
-.btn:hover, .btn:active, .btn:focus {
-    color: #fff;
-}
-
-.log-form p{
-    font-size: 2vmin;
-}
-
-
-.textspan{
-    position: absolute;
-    white-space: nowrap;
-    margin-top: 7vh;
-    color: #78cc1f;
-    margin-left: 12vw;
-    font-size: 2vmin;
-}
-
-.link:hover, .link:active {
-    color: #78cc1f;
-}
- 
 .md-form{
-    width: 20vw;
+    margin-left: 0.3vw;
+    width: 18vmax;
 }
 
 .md-form2{
-    width: 20vw;
-    padding-top: 1px;
+    margin-left: 0.3vw;
+}
+
+
+.log-form h4 {
+    color: #78cc1f;
+    text-align: center;
+    padding-bottom: 2vh;
 }
 
 .form-title{
-    padding-bottom: 4vh;
+    margin-top: 2vh;
 }
 
+.forgot-text{
+    position: absolute;
+    white-space: nowrap;
+    margin-top: -4vh;
+    color: #78cc1f;
+    margin-left: 10.3vw;
+    font-size:1vw;
+}
+
+
+@media only screen and (max-width:1100px) and (min-height:1000px){
+    
+    .logButton{
+        font-size: 2vmax;
+        margin-right:2vw;
+    }
+
+    .forgot-text{
+        margin-top: -2vh;
+        margin-left: 13vw;
+        font-size: 1vmax;
+    }
+}
+
+@media only screen and (max-width:960px) and (min-height:1000px){
+
+    .logButton{
+        font-size: 2vmax;
+    }
+
+    .forgot-text{
+        margin-top: -3vh;
+        margin-left: 11vw;
+        font-size:1.2vmax;
+    }
+}
+
+@media only screen and (max-width: 767.9px) {
+    .log {
+        position:relative;
+        width:46vw;
+        height: 40vh;
+        margin:0;
+        margin-top: 5vh;
+    }
+
+    .logButton{
+        height:5.5vh;
+    }
+
+    .md-form{
+        margin-left: 2vw;
+        width: 33vw;
+    } 
+
+    .md-form2{
+        margin-left: 2vw;
+    }   
+
+    .logButton{
+        width:29vw;
+        margin-right:6.5vw;
+        font-size:2vh;
+    }
+
+    .forgot-text{
+        margin-left: 19vw;
+        font-size: 2vw;
+    }                           
+}
+
+
+@media only screen and (max-width: 450px) {
+    
+    .log {
+        position:relative;
+        width:70vw;
+        height: 40vh;
+        margin:0;
+        margin-top: 5vh;
+    }
+
+    .md-form{
+        margin-left: 2vw;
+        width: 60vw;
+    } 
+
+
+    .md-form2{
+        margin-left: 2vw;
+    }   
+
+    .logButton{
+        width:53vw;
+        margin-right:3vw;
+    }
+
+    .forgot-text{
+        margin-left: 37vw;
+        font-size: 3vw;
+    }                           
+}
+
+@media only screen and (max-height: 680px) {
+    .log{
+        margin:0;
+        height: 45vh;
+    }
+
+    .form-title{
+        margin-top: 0;
+    }                 
+}

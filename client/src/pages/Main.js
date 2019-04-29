@@ -15,13 +15,12 @@ export class Main extends Component {
         <div className="main">
 
 
-          <Container>
+          <Container className="main-container">
             <Row>
-              <Col sm={6}>
+              <Col lg={6} md={6} sm={7} xs={8}>
                 <div className="topic">
 
-                  <h2 className="leftTitle">
-                    For both IT Company and</h2>
+                  <h2 className="leftTitle">For both IT Company and</h2>
 
                   <div className="shape">
                     <div className="rectangle">
@@ -38,7 +37,7 @@ export class Main extends Component {
                     successful project!</p>
                 </div>
               </Col>
-              <Col sm={6}>
+              <Col lg={6} md={6} sm={7} xs={8}>
                 <Login history={this.props.history}/>
               </Col>
             </Row>
