@@ -43,9 +43,9 @@ export class Main extends Component {
             </Row>
 
           </Container>
-          <div className="buttons">
-            <a href="registration/company" className="but but-comp">Company</a>
-            <a href="registration/student" className="but but-stud">Student</a>
+          <div className="buttonsMain">
+            <a href="registration/company" className="butMain but-comp">Company</a>
+            <a href="registration/student" className="butMain but-stud">Student</a>
           </div>
         </div>
         {/* end of main container */}

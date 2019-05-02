@@ -72,7 +72,7 @@ a{
   padding-left:4vmin;
 }
 
-.buttons {
+.buttonsMain {
   position:absolute;
   align-self:center;
   top:77vh;
@@ -80,7 +80,7 @@ a{
   display:inline;
 }
 
-.but{
+.butMain{
   border:none;
   font-size:4vmin;
   color:#fff;
@@ -91,7 +91,7 @@ a{
   box-shadow:rgba(0, 0, 0, 0.2) -0.5vmin 0.7vmin 0.6vmin 0px;
 }
 
-.but:hover{
+.butMain:hover{
   color: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
@@ -119,14 +119,14 @@ a{
     padding-left: 15vw;
   }
 
-  .buttons {
+  .buttonsMain {
     position:absolute;
     top:auto;
     bottom: 0vh;
     display:flex;
   }
   
-  .but{
+  .butMain{
     float:left;
     height:10vh;
     width:50vw;

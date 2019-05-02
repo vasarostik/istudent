@@ -59,8 +59,8 @@ export class Login extends Component {
                     authenticated = true;
 
                     const jwt = getJwt();
-                    if (!jwt) {
-                        //verify existed user jwt
+                    if (jwt) {
+                        console.log('jwt exists');
                     } else {
                         localStorage.setItem('accessToken', response.data.accessToken);
                         localStorage.setItem('refreshToken', response.data.refreshToken);
