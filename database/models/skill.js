@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Skill.associate = function(models) {
-    // associations can be defined here
+    Skill.hasMany(models.StudentSkill),
+    Skill.hasMany(models.VacancySkill),
+    Skill.hasMany(models.CourseSkill)
   };
   return Skill;
 };

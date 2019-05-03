@@ -55,7 +55,7 @@ export class Login extends Component {
 
                 console.log('Status: ' + response.status);
 
-                if (response.status === 201) {
+                if (response.status === 200) {
                     authenticated = true;
 
                     const jwt = getJwt();
@@ -102,21 +102,17 @@ export class Login extends Component {
 
                         <h4 className="font-weight-bold mb-3 form-title">Sign in</h4>
 
-                        <div className="md-form">
+                        <div className="log-input">
                             <MDBInput label="E-mail address" type="email" outline icon="envelope" onChange={this.handleEmail.bind(this)} required />
                         </div>
 
-                        <div className="md-form2">
+                        <div className="log-input2">
                             <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} required />
                             <label>
                                 <a href="#!"><span className="forgot-text">Forgot password?</span></a>
                             </label>
                         </div>
-
-                        <div className="float-right">
-                            <button className="logButton" type="submit">Sign in</button>
-                        </div>
-
+                        <button className="logButton" type="submit">Sign in</button>
                     </form>
 
                 </div>

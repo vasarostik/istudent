@@ -10,7 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Student.associate = function(models) {
-    // associations can be defined here
+    Student.belongsTo(models.User),
+    Student.hasOne(models.City),
+    Student.hasMany(models.Education),
+    Student.hasMany(models.AdditionalEducation),
+    Student.hasMany(models.StudentProject),
+    Student.hasMany(models.WorkExperience),
+    Student.hasMany(models.StudentSkill),
+    Student.hasMany(models.StudentTechnology),
+    Student.hasMany(models.StudentVacancy),
+    Student.hasMany(models.StudentCourse)
   };
   return Student;
 };

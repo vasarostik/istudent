@@ -9,7 +9,9 @@ module.exports = {
         references: {
           table: "Users",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       }),
       queryInterface.addConstraint("Students", ["city"], {
         type: "foreign key",
@@ -17,15 +19,17 @@ module.exports = {
         references: {
           table: "Cities",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       })
     );
   },
 
   down: (queryInterface, Sequelize) => {
     return (
-      queryInterface.removeConstraint("Student", "FK_Students_id"),
-      queryInterface.removeConstraint("Student", "FK_Students_city")
+      queryInterface.removeConstraint("Students", "FK_Students_id"),
+      queryInterface.removeConstraint("Students", "FK_Students_city")
     );
   }
 };

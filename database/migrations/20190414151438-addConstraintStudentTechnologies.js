@@ -9,7 +9,9 @@ module.exports = {
         references: {
           table: "Students",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       }),
       queryInterface.addConstraint("StudentTechnologies", ["technologyID"], {
         type: "foreign key",
@@ -17,7 +19,9 @@ module.exports = {
         references: {
           table: "Technologies",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       })
     );
   },

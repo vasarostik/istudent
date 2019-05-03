@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Position.associate = function(models) {
-    // associations can be defined here
+    Position.hasMany(models.Vacancy)
   };
   return Position;
 };

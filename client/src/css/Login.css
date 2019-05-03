@@ -14,7 +14,7 @@
     height:5.5vmin;
     width:16vmax;
     border:0px;
-    margin-right:1.1vw;
+    margin-left:2vw;
     font-size:1.2vw;
     color:#fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
@@ -27,13 +27,14 @@
 
 /* Input form */
 
-.md-form{
+.log-input{
     margin-left: 0.3vw;
     width: 18vmax;
 }
 
-.md-form2{
+.log-input2{
     margin-left: 0.3vw;
+    width: 18vmax;
 }
 
 
@@ -97,12 +98,12 @@
         height:5.5vh;
     }
 
-    .md-form{
+    .log-input{
         margin-left: 2vw;
         width: 33vw;
     } 
 
-    .md-form2{
+    .log-input2{
         margin-left: 2vw;
     }   
 
@@ -129,13 +130,13 @@
         margin-top: 5vh;
     }
 
-    .md-form{
+    .log-input{
         margin-left: 2vw;
         width: 60vw;
     } 
 
 
-    .md-form2{
+    .log-input2{
         margin-left: 2vw;
     }   
 

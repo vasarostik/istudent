@@ -9,7 +9,9 @@ module.exports = {
         references: {
           table: "Users",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       }),
       queryInterface.addConstraint("UserRoles", ["roleID"], {
         type: "foreign key",
@@ -17,7 +19,9 @@ module.exports = {
         references: {
           table: "Roles",
           field: "id"
-        }
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
       })
     );
   },

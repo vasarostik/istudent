@@ -8,13 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       position: DataTypes.STRING,
       workFrom: DataTypes.DATE,
       workUntil: DataTypes.DATE,
-      isWorking: DataTypes.BOOLEAN,
-      projectID: DataTypes.INTEGER
+      isWorking: DataTypes.BOOLEAN
     },
     {}
   );
   WorkExperience.associate = function(models) {
-    // associations can be defined here
+    WorkExperience.belongsTo(models.Student)
   };
   return WorkExperience;
 };

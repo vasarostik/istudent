@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   VacancyTechnology.associate = function(models) {
-    // associations can be defined here
+    VacancyTechnology.belongsTo(models.Technology),
+    VacancyTechnology.belongsTo(models.Vacancy)
   };
   return VacancyTechnology;
 };

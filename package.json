@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.14.6"
   },

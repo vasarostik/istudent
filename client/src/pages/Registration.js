@@ -40,11 +40,13 @@ export class Registration extends Component {
                 password: password
             });
 
-            await axios.post('http://localhost:5000/reg', data, {
+            await axios.post('http://localhost:5000/reg/student', data, {
 
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin' : '*',
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
                 }
 
             }).catch(function (error) {
@@ -77,26 +79,6 @@ export class Registration extends Component {
 
 
             if (registered === true) {
-
-                axios.post('http://localhost:5000/auth', data, {
-
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-
-                }).catch(function (error) {
-
-                    alert(error);
-                    console.log(error);
-
-                }).then(function (response) {
-
-
-                    localStorage.setItem('accessToken', response.data.accessToken);
-                    localStorage.setItem('refreshToken', response.data.refreshToken);
-                });
-
                 this.props.history.push(this.props.history.location.pathname.concat('/addInfo'));
             }
 
@@ -159,32 +141,31 @@ export class Registration extends Component {
                     </ListGroup>
 
                     {/*Input form */}
-                    <form className="reg-form" onSubmit={this.handleSubmit}>
-                        <h4 className="font-weight-bold mb-3">Create account</h4>
-                        <p className="mdb-color-text">To sign up, please fill in these text fields</p>
+                        <form className="reg-form" onSubmit={this.handleSubmit}>
+                            <h4 className="font-weight-bold mb-3">Create account</h4>
+                            <p className="mdb-color-text">To sign up, please fill in these text fields</p>
 
-                        <div className="md-form">
-                            <MDBInput label="E-mail address" type="email" outline icon="envelope" onChange={this.handleEmail.bind(this)} required />
-                        </div>
-                        <div className="md-form">
-                            <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} required />
-                        </div>
-                        <div className="md-form">
-                            <MDBInput label="Confirm password" type="password" outline icon="fas fa-lock" onChange={this.handleConfirmPasswordChange.bind(this)} required />
-                        </div>
-
-                        <div className="space">
-                            <div className="float-left">
-                                <a href="/" ><button className="signup-but cancel" type="button" style={{ color: 'white' }}>Cancel</button></a>
+                            <div className="reg-input">
+                                <MDBInput label="E-mail address" type="email" outline icon="envelope" onChange={this.handleEmail.bind(this)} required />
                             </div>
-                            <div className="float-right">
-                                <button className="signup-but sign-up" type="submit" style={{ color: 'white' }}>Continue</button>
+                            <div className="reg-input">
+                                <MDBInput label="Password" type="password" outline icon="fas fa-key" onChange={this.handlePasswordChange.bind(this)} required />
                             </div>
-                        </div>
+                            <div className="reg-input">
+                                <MDBInput label="Confirm password" type="password" outline icon="fas fa-lock" onChange={this.handleConfirmPasswordChange.bind(this)} required />
+                            </div>
 
-                    </form>
+                            <div className="space">
+                                <div className="float-left">
+                                    <a href="/" ><button className="signup-but cancel" type="button" style={{ color: 'white' }}>Cancel</button></a>
+                                </div>
+                                <div className="float-right">
+                                    <button className="signup-but sign-up" type="submit" style={{ color: 'white' }}>Continue</button>
+                                </div>
+                            </div>
 
-                </div>
+                        </form>
+                    </div>
                 {/* end of main container */}
             </div>
 

@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Company.associate = function(models) {
-    // associations can be defined here
+    Company.belongsTo(models.User),
+    Company.hasOne(models.City)
   };
   return Company;
 };

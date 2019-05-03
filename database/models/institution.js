@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Institution.associate = function(models) {
-    // associations can be defined here
+    Institution.belongsTo(models.Education)
   };
   return Institution;
 };

@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Vacancy.associate = function(models) {
-    // associations can be defined here
+    Vacancy.belongsTo(models.Company),
+    Vacancy.belongsTo(models.Position),
+    Vacancy.hasMany(models.StudentVacancy),
+    Vacancy.hasMany(models.VacancySkill),
+    Vacancy.hasMany(models.VacancyTechnology)
   };
   return Vacancy;
 };

@@ -1,16 +1,17 @@
 const router = require("express").Router();
 const passport = require("passport");
-const usersController = require("../controllers/users");
+const authController = require("../controllers/authorization");
 
-router.post("/", usersController.logIn);
+router.post("/", authController.signIn);
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
 router.get(
   "/google/redirect",
   passport.authenticate("google", { failureRedirect: "/login" }),
-  usersController.googleOAuth
+  authController.signInWithGoogle
 );
+router.post("/refresh", authController.refreshToken)
 
 //router.get('/facebook', passport.authenticate('facebook'))
 
 module.exports = router;
+

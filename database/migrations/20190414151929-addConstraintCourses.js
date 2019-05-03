@@ -8,7 +8,9 @@ module.exports = {
       references: {
         table: "Companies",
         field: "id"
-      }
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade"
     });
   },
 

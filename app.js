@@ -16,12 +16,13 @@ app.use(passport.initialize({}));
 // Passport configuration
 require('./core/passport');
 
+
 // Створюємо маршрути
-app.use("/reg", Routes.registrationRoutes);
-app.use("/auth", Routes.authRoutes);
-app.use("/profile", passport.authenticate('bearer', { session: false }), Routes.profileRoutes)
+app.use("/reg", Routes.registration);
+app.use("/auth", Routes.authorization);
+app.use("/profile", passport.authenticate('bearer', { session: false }), Routes.profile)
 
 
 app.listen(configs.port, configs.host, () => {
-  console.log(`app now listening for request on ${configs.host}:${configs.port}.`);
+    console.log(`app now listening for request on ${configs.host}:${configs.port}.`);
 });

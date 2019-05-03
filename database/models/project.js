@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Project.associate = function(models) {
-    // associations can be defined here
+    Project.hasMany(models.StudentProject)
   };
   return Project;
 };

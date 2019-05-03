@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   CourseTechnology.associate = function(models) {
-    // associations can be defined here
+    CourseTechnology.belongsTo(models.Course),
+    CourseTechnology.belongsTo(models.Technology)
   };
   return CourseTechnology;
 };

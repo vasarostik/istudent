@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Technology.associate = function(models) {
-    // associations can be defined here
+    Technology.hasMany(models.StudentTechnology),
+    Technology.hasMany(models.VacancyTechnology),
+    Technology.hasMany(models.CourseTechnology)
   };
   return Technology;
 };

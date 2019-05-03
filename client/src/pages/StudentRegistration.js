@@ -137,7 +137,7 @@ export class StudentRegistration extends Component {
                                         <InputFiles style={{ height: "auto" }} onChange={files => console.log(files)}>
                                             <button className="butUpload" style={{ color: "#6c757d" }}>
                                                 <span className="ownUploadText">Upload photo</span>
-                                                <i id="ownUploadIcon" class="far fa-image"></i>
+                                                <i id="ownUploadIcon" className = "far fa-image"></i>
                                             </button>
                                         </InputFiles>
                                         <span className="hideReactJSX">{this.state.numOfSubs = index}</span>
@@ -145,7 +145,7 @@ export class StudentRegistration extends Component {
                                     </Row>
                                 ))}
                                 {this.state.numOfSubs !== 0 ? <button className="ownButDel" onClick={this.handleDeleteProject(this.state.numOfSubs)}><i class="fas fa-minus-square"></i></button> : ''}
-                                <button className="ownButAdd" onClick={this.addProject}><i class="fas fa-plus"></i></button>
+                                <button className="ownButAdd" onClick={this.addProject}><i className="fas fa-plus"></i></button>
                             </Row>
                         </div>
                         {/*

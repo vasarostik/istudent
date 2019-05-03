@@ -72,44 +72,17 @@
 }
 
 .cancel{
-    width:15vmin;
+    width:7.5vw;
     background-color: #000;
 }
 
 .sign-up{
-    width:21.24vmin;
+    width:10.3vw;
     background-color:#78cc1f;
 }
 
 .socialButton:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-
-@media only screen and (max-width: 767.9px) {
-    .buttonGroup{
-        margin-top:20vh;
-        margin-left: 26vw;
-    }
-
-    .rectangle1{
-        top:7vh;
-        margin-left:10vw;
-        height: 13vmin;
-        width: 62vmin;
-    }
-
-    .emptyRectangle1{
-        margin-left:-3.5vw;
-        height: 13vmin;
-        width: 60vmin;
-    }
-
-    .rightTitle1{
-        font-size: 5vmin;
-        top:1vmin;
-    }
-
 }
 
   /* Input form */
@@ -120,17 +93,27 @@
     padding: 1vw;
     width:25vw;
     margin-left:58vw;
-    height: 30vh;
+    height: 45vh;
     padding-top: -10vh;
+    background-color: #fff;
+    border: 2px solid #78cc1f;
+    color: #000;
 }
 
 .reg-form h4 {
     color: #78cc1f;
+    text-align:center;
 }
 
 .reg-form p {
+    text-align:center;
     font-size: 1.1vw;
     font-weight: 400;
+}
+
+.reg-input {
+    width: 20vmax;
+    margin-left:1vmax;
 }
 
 .input{
@@ -157,8 +140,8 @@ a {
 
 .space {
     padding-bottom: 7.6vh;
-    padding-left: 2.2vw;
-    width: 20vw;
+    padding-left: 3vw;
+    width: 20.8vw;
 }
 
 .forgotlink {

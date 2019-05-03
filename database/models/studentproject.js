@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   StudentProject.associate = function(models) {
-    // associations can be defined here
+    StudentProject.belongsTo(models.Student),
+    StudentProject.belongsTo(models.Project),
+    StudentProject.hasMany(models.StudentHasManyRoles)
   };
   return StudentProject;
 };

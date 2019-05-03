@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   StudentSkill.associate = function(models) {
-    // associations can be defined here
+    StudentSkill.belongsTo(models.Student),
+    StudentSkill.belongsTo(models.Skill)
   };
   return StudentSkill;
 };
