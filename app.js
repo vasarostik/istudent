@@ -22,6 +22,9 @@ app.use("/reg", Routes.registration);
 app.use("/auth", Routes.authorization);
 app.use("/profile", passport.authenticate('bearer', { session: false }), Routes.profile)
 
+app.get('/getToken', passport.authenticate('bearer', { session: false }), (req, res) => {
+    res.status(200).send('Valid token');
+});
 
 app.listen(configs.port, configs.host, () => {
     console.log(`app now listening for request on ${configs.host}:${configs.port}.`);

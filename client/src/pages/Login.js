@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../css/Main.css';
+import '../css/Login.css';
 import { NavbarPage } from "../components/NavbarPage";
 import { Container, Row, Col } from 'react-bootstrap';
 import { LoginComponent } from '../components/LoginComponent';
 
-export class Main extends Component {
+export class Login extends Component {
 
   render() {
     return (
@@ -38,6 +38,7 @@ export class Main extends Component {
                 </div>
               </Col>
               <Col lg={6} md={6} sm={7} xs={8}>
+                <LoginComponent history={this.props.history}/>
               </Col>
             </Row>
 

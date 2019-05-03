@@ -34,6 +34,7 @@ export class NavbarPage extends Component {
           </MDBNavbarNav>
 
           <a href="/" className="a-logo">
+          
           <MDBNavItem className="logo hideBlock">
             <img className="logoImg" src={logo} alt="logo" />
             <h5 className="logoTitle">student</h5>

@@ -69,12 +69,15 @@ export class Registration extends Component {
 
                     if (response.status === 201) {
                         registered = true;
+                        localStorage.setItem('accessToken', response.data.accessToken);
+                        localStorage.setItem('refreshToken', response.data.refreshToken);
                         console.log('success');
                     } else {
                         registered = false;
                         alert('This user already exists');
                     }
                 }
+                return;
             });
 
 

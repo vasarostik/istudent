@@ -6,19 +6,24 @@ import "mdbreact/dist/css/mdb.css";
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter,Route,Switch } from 'react-router-dom';
 import { Main } from './pages/Main';
+import { Login } from './pages/Login';
 import { Registration } from './pages/Registration';
 import { StudentRegistration } from './pages/StudentRegistration';
 import { Profile } from './pages/Profile';
+import { AuthenticatedComponent } from './components/AuthenticatedComponent';
 
 ReactDOM.render(
 <BrowserRouter>
   <Switch>
-    <Route exact path="/" component={Main}/>
+    <Route exact path="/Login" component={Login}/>
     <Route exact path="/registration/student" component={Registration}/>
     <Route exact path="/registration/company" component={Registration}/>
-    <Route exact path="/registration/student/addInfo" component={StudentRegistration}/>
-    <Route exact path="/registration/company/addInfo" component={StudentRegistration}/>
-    <Route exact path="/profile" component={Profile}/>
+    <AuthenticatedComponent>
+      <Route exact path="/" component={Main}/>
+      <Route exact path="/profile" component={Profile}/>
+      <Route exact path="/registration/student/addInfo" component={StudentRegistration}/>
+      <Route exact path="/registration/company/addInfo" component={StudentRegistration}/>
+    </AuthenticatedComponent>
   </Switch>
 </BrowserRouter>, document.getElementById('root'));
 

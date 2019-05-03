@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { MDBInput } from 'mdbreact';
-import '../css/Login.css';
+import '../css/LoginComponent.css';
 import axios from 'axios';
 import { getJwt } from '../helpers/jwt';
 
-export class Login extends Component {
+export class LoginComponent extends Component {
     constructor(props) {
         super(props);
 
@@ -30,8 +30,8 @@ export class Login extends Component {
         await axios.post('http://localhost:5000/auth', data, {
 
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
 
         }).catch(function (error) {
@@ -42,12 +42,11 @@ export class Login extends Component {
                 if (error.response.status === 403) {
                     alert('Incorrect login or password');
                 } else {
-                    alert(error);
+                    alert(error.response);
                 }
-            } else {
-                alert(error);
             }
 
+            return;
 
         }).then(function (response) {
 
@@ -76,7 +75,7 @@ export class Login extends Component {
             }
         });
 
-        if (authenticated === true) {
+        if (authenticated) {
             console.log('redirect');
             this.props.history.push('/profile');
         }
