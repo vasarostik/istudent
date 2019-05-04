@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Profile.css';
-import { NavbarPage } from "../components/NavbarPage";
+import { AuthNavbar } from "../components/AuthNavbar";
 
 
 export class Profile extends Component {
@@ -34,7 +34,7 @@ export class Profile extends Component {
 
         return (
             <div className="Profile">
-                <NavbarPage style={{ boxShadow: "none" }} />
+                <AuthNavbar style={{ boxShadow: "none" }} />
                 {/* main container */}
                 <div className="profile">
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Main.css';
-import { NavbarPage } from "../components/NavbarPage";
+import { AuthNavbar } from "../components/AuthNavbar";
 import { Container, Row, Col } from 'react-bootstrap';
 import { LoginComponent } from '../components/LoginComponent';
 
@@ -9,7 +9,7 @@ export class Main extends Component {
   render() {
     return (
       <div className="App">
-        <NavbarPage />
+        <AuthNavbar />
 
         {/* main container */}
         <div className="main">

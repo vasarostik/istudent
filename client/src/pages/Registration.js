@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBInput } from 'mdbreact';
 import '../css/Registration.css';
-import { NavbarPage } from "../components/NavbarPage";
+import { AnonNavbar } from "../components/AnonNavbar";
 import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 import { getJwt } from '../helpers/jwt';
@@ -107,7 +107,7 @@ export class Registration extends Component {
 
         return (
             <div className="Registration">
-                <NavbarPage style={{ boxShadow: "none" }} />
+                <AnonNavbar style={{ boxShadow: "none" }} />
                 {/* main container */}
                 <div className="reg">
 
