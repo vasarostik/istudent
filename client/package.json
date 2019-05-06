@@ -10,6 +10,8 @@
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "history": "^4.9.0",
+    "html2canvas": "^1.0.0-rc.1",
+    "jspdf": "^1.5.3",
     "mdbreact": "^4.13.0",
     "react": "^16.2.0",
     "react-autosuggest": "^9.4.3",

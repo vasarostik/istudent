@@ -1,34 +1,11 @@
 import React, { Component } from 'react';
 import '../css/Profile.css';
 import { AuthNavbar } from "../components/AuthNavbar";
-
+import { Container, Row, Col } from 'react-bootstrap';
+import { ProfileCard } from '../components/ProfileCard';
+import { PrintButton } from '../components/PrintButton';
 
 export class Profile extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        }
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-    }
-
-
-    handleEmail(event) {
-        this.setState({ email: event.target.value })
-    }
-
-    handlePasswordChange(event) {
-        this.setState({ password: event.target.value })
-    }
-
-    handleConfirmPasswordChange(event) {
-        this.setState({ confirmPassword: event.target.value })
-    }
 
     render() {
 
@@ -37,13 +14,22 @@ export class Profile extends Component {
                 <AuthNavbar style={{ boxShadow: "none" }} />
                 {/* main container */}
                 <div className="profile">
-
-                    {/* Rectangle */}
-                    <div className="rectangle1">
-                        <div className="emptyRectangle1">
-                            <h2 className="rightTitle1"> Your Profile</h2>
-                        </div>
-                    </div>
+                    <Container>
+                        <Row>
+                            <Col lg={3} md={6} sm={7} xs={8}>
+                                {/* Rectangle */}
+                                <div className="profile-rectangle">
+                                    <div className="profile-emptyRectangle">
+                                        <h2 className="profile-rightTitle"> Your Profile</h2>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col lg={9} md={6} sm={7} xs={8} >
+                                <PrintButton id={"profileCard"} label={"Print CV in PDF"} />
+                                <ProfileCard onHover id={"profileCard"} />
+                            </Col>
+                        </Row>
+                    </Container>
 
                 </div>
                 {/* end of main container */}
