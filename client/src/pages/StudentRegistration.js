@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useState } from 'react';
 import '../css/StudentRegistration.css';
 import { AutoSuggest } from "../components/AutoSuggest";
 import { Row } from 'react-bootstrap';
@@ -8,7 +8,6 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { Formik, Field, Form, FieldArray } from 'formik';
 import { useDropzone } from 'react-dropzone';
-import Recaptcha from "react-recaptcha";
 import * as Yup from 'yup';
 
 const options = [
@@ -35,27 +34,31 @@ const options = [
 const initialValues = {
     startDate: new Date(),
     endDate: new Date(),
-    firstName: "",
-    secName: "",
-    city: "",
-    university: "",
-    specialization: "",
-    courseUni: "",
-    links: [{
-        gitlink: '',
+    student: {
+        firstName: "",
+        lastName: "",
+        city: ""
+    },
+    education:{
+        institution: "",
+        specialization: "",
+        course: ""
+    },
+    projects: [{
+        link: '',
         additionallink: '',
         projectPhoto: [],
     }],
-    courses: [{
-        course: '',
+    additionalEducation: [{
+        certificationLink: '',
         coursePhoto: [],
     }],
     achievements: [{
         achievement: '',
         achievementPhoto: [],
     }],
-    type: [],
-    experience: [{
+    technologies: [],
+    workExperience: [{
         company: '',
         position: '',
     }],
@@ -76,20 +79,21 @@ const thumb = {
 };
 
 const SignupSchema = Yup.object().shape({
-    firstName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    secName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    recaptcha: Yup.string().required(),
+    student: {
+        firstName: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .required('Required'),
+        lastName: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .required('Required'),
+    }
 });
 
 const onChange = (id, newValue) => {
     console.log(`changed to ${newValue}`);
-    id === 'city' ? initialValues.city = newValue : initialValues.university = newValue;
+    id === 'city' ? initialValues.student.city = newValue : initialValues.education.institution = newValue;
 }
 
 function Upload(props) {
@@ -112,14 +116,14 @@ function Upload(props) {
                 2
             ));
             console.log(props.index, props.id)
-            if (props.id === "course") {
-                props.values.courses[props.index].coursePhoto = acceptedFiles;
+            if (props.id === "certificationLink") {
+                props.values.additionalEducation[props.index].coursePhoto = acceptedFiles;
             }
             if (props.id === "achievement") {
                 props.values.achievements[props.index].achievementPhoto = acceptedFiles;
             }
             if (props.id === "project") {
-                props.values.links[props.index].projectPhoto = acceptedFiles;
+                props.values.projects[props.index].projectPhoto = acceptedFiles;
             }
         }
     });
@@ -130,28 +134,28 @@ function Upload(props) {
                 <div id="thumbInner" key={"thumb" + file.name}>
 
                     {props.id === "project" ?
-                        ((props.values.links[props.index].projectPhoto.length === 0 ) ?
+                        ((props.values.projects[props.index].projectPhoto.length === 0) ?
 
                             <img key={file.size + "img"}
                                 src={file.preview}
                                 id="uploadImg"
                             />
                             :
-                            props.values.links[props.index].projectPhoto.map(file1 => (
+                            props.values.projects[props.index].projectPhoto.map(file1 => (
                                 <img key={file1.name + "img"}
                                     src={file1.preview}
                                     id="uploadImg" />
                             ))) : null}
                     {
-                        props.id === "course" ?
-                            ((props.values.courses[props.index].coursePhoto.length === 0 ?
+                        props.id === "certificationLink" ?
+                            ((props.values.additionalEducation[props.index].coursePhoto.length === 0 ?
 
                                 <img key={file.size + "img1"}
                                     src={file.preview}
                                     id="uploadImg"
                                 />
                                 :
-                                props.values.courses[props.index].coursePhoto.map(file2 => (
+                                props.values.additionalEducation[props.index].coursePhoto.map(file2 => (
                                     <img key={file2.name + "img1"}
                                         src={file2.preview}
                                         id="uploadImg" />
@@ -180,7 +184,7 @@ function Upload(props) {
             <div className="container">
                 <Row id="but" {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
-                    <p style={{ marginTop: "0.5vmax",color:"#6c757d" }}>Upload image</p>
+                    <p style={{ marginTop: "0.5vmax", color: "#6c757d" }}>Upload image</p>
                     <i key="owncon" id="ownUploadIcon" className="far fa-image"></i>
 
                 </Row>
@@ -190,7 +194,7 @@ function Upload(props) {
             </div> : <div className="container">
                 <div id="uploadBut" {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
-                    <p style={{ marginLeft: "2vmax", color:"#6c757d" }}>Drop your image here, or click to select</p>
+                    <p style={{ marginLeft: "2vmax", color: "#6c757d" }}>Drop your image here, or click to select</p>
                 </div>
                 <aside id="thumbsContainer">
                     {thumbProject}
@@ -228,13 +232,13 @@ export class StudentRegistration extends Component {
                     initialValues={initialValues}
                     validationSchema={SignupSchema}
                     onSubmit={(values) => {
-                        values.city = initialValues.city;
-                        values.university = initialValues.university;
+                        values.student.city = initialValues.student.city;
+                        values.education.institution = initialValues.education.institution;
                         values.startDate = this.state.startDate;
                         values.endDate = this.state.endDate;
 
                         console.log(JSON.stringify({
-                            coursePhoto: values.courses[0].coursePhoto.map(file => ({
+                            coursePhoto: values.additionalEducation[0].coursePhoto.map(file => ({
                                 fileName: file.name,
                                 type: file.type,
                                 size: `${file.size} bytes`
@@ -272,7 +276,7 @@ export class StudentRegistration extends Component {
                                     <div className="generalFormStyle">
                                         <Row>
                                             <div className="infoRow">
-                                                <Field name="firstName">
+                                                <Field name="student.firstName">
                                                     {({ field, form }) => (
                                                         <input {...field} required="required" onBlur={handleBlur} className="but" type="text" placeholder="First Name" />
                                                     )}
@@ -282,19 +286,19 @@ export class StudentRegistration extends Component {
                                                 ) : null}
                                             </div>
                                             <div className="infoRow">
-                                                <Field name="secName">
+                                                <Field name="student.lastName">
                                                     {({ field, form }) => (
-                                                        <input {...field} required="required" onBlur={handleBlur} className="but" type="text" placeholder="Second Name" />
+                                                        <input {...field} required="required" onBlur={handleBlur} className="but" type="text" placeholder="Last Name" />
                                                     )}
                                                 </Field>
-                                                {errors.secName && touched.secName ? (
-                                                    <div className="error">{errors.secName}</div>
+                                                {errors.lastName && touched.lastName ? (
+                                                    <div className="error">{errors.lastName}</div>
                                                 ) : null}
                                             </div>
                                             <div className="infoRow">
                                                 <AutoSuggest
                                                     id="city"
-                                                    name="city"
+                                                    name="student.city"
                                                     placeholder="City"
                                                     onBlur={handleBlur}
                                                     onChange={onChange} />
@@ -304,21 +308,21 @@ export class StudentRegistration extends Component {
                                         <Row>
                                             <div className="infoRow">
                                                 <AutoSuggest
-                                                    id="university"
-                                                    name="university"
+                                                    id="institution"
+                                                    name="education.institution"
                                                     placeholder="University"
                                                     onBlur={handleBlur}
                                                     onChange={onChange} />
                                             </div>
                                             <div className="infoRow">
-                                                <Field name="specialization">
+                                                <Field name="education.specialization">
                                                     {({ field, form }) => (
                                                         <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Specialization" />
                                                     )}
                                                 </Field>
                                             </div>
                                             <div className="infoRow">
-                                                <Field name="courseUni">
+                                                <Field name="education.course">
                                                     {({ field, form }) => (
                                                         <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Course" />
                                                     )}
@@ -334,14 +338,14 @@ export class StudentRegistration extends Component {
                                     </div>
                                     <div className="ownformStyle">
                                         <Row className="ownRow">
-                                            <FieldArray key="linkarr" name="links">
+                                            <FieldArray key="linkarr" name="projects">
                                                 {({ push, remove }) =>
                                                     <React.Fragment key="rf">
-                                                        {values.links && values.links.length > 0 && values.links.map((link, index) =>
+                                                        {values.projects && values.projects.length > 0 && values.projects.map((link, index) =>
                                                             <Row key={`link-${index}`}>
                                                                 <span key="owtext" className="ownText">Project {index + 1}</span>
                                                                 <div key={`col1-${index}`} className="infoRow">
-                                                                    <Field key="git" name={`links[${index}].gitlink`}>
+                                                                    <Field key="git" name={`projects[${index}].link`}>
                                                                         {({ field, form }) => (
                                                                             <input {...field} key="gitinput" onBlur={handleBlur} className="but" type="text" placeholder="Github link" />
                                                                         )}
@@ -351,7 +355,7 @@ export class StudentRegistration extends Component {
                                                                 <span key="line1" className="ownline">|</span>
 
                                                                 <div key={`col2-${index}`} className="infoRow">
-                                                                    <Field key="add" name={`links[${index}].additionallink`}>
+                                                                    <Field key="add" name={`projects[${index}].additionallink`}>
                                                                         {({ field, form }) => (
                                                                             <input {...field} key="addinput" onBlur={handleBlur} className="but" type="text" placeholder="Additional link" />
                                                                         )}
@@ -361,15 +365,15 @@ export class StudentRegistration extends Component {
                                                                 <span key="line2" className="ownline">|</span>
 
                                                                 <div key={`col3-${index}`} className="infoRow">
-                                                                    <Field name={`links${index}.projectPhoto`} key={`photo-${index}`} id="project" values={values} index={index} component={Upload} >
+                                                                    <Field name={`projects${index}.projectPhoto`} key={`photo-${index}`} id="project" values={values} index={index} component={Upload} >
                                                                     </Field>
 
                                                                 </div>
 
-                                                                {values.links.length > 1 ? <button key="addbut" type="button" onClick={() => remove(index)} className="ownButAdd del"><i key="addicon" className="fas fa-minus"></i></button> : ''}
+                                                                {values.projects.length > 1 ? <button key="addbut" type="button" onClick={() => remove(index)} className="ownButAdd del"><i key="addicon" className="fas fa-minus"></i></button> : ''}
                                                             </Row>
                                                         )}
-                                                        <button type="button" onClick={() => push({ gitlink: '', additionallink: '', projectPhoto: [] })} className="ownButAdd"><i className="fas fa-plus"></i></button>
+                                                        <button type="button" onClick={() => push({ link: '', additionallink: '', projectPhoto: [] })} className="ownButAdd"><i className="fas fa-plus"></i></button>
 
 
                                                     </React.Fragment>
@@ -388,7 +392,7 @@ export class StudentRegistration extends Component {
                                             {/* <button className={this.state.button ? "additionalButtonTrue" : "additionalButtonFalse"}
                                         onClick={this.toggleCollapseAdditional("hide")}>Courses</button>*/}
                                             <button type="button" className="additionalButton"
-                                                onClick={this.toggleCollapseAdditional("courses")}>Courses</button>
+                                                onClick={this.toggleCollapseAdditional("additionalEducation")}>Courses</button>
                                             <h2 className="line">|</h2>
                                             <button type="button" className="additionalButton"
                                                 onClick={this.toggleCollapseAdditional("achievements")}>Achievements</button>
@@ -397,30 +401,30 @@ export class StudentRegistration extends Component {
                                             <h2 className="line">|</h2>
                                             <button type="button" className="additionalButton" onClick={this.toggleCollapseAdditional("technology")}>Technology</button>
                                             <h2 className="line">|</h2>
-                                            <button type="button" className="additionalButton" onClick={this.toggleCollapseAdditional("experience")}>Work Experience</button>
+                                            <button type="button" className="additionalButton" onClick={this.toggleCollapseAdditional("workExperience")}>Work Experience</button>
                                         </Row>
-                                        <MDBCollapse id="courses" isOpen={this.state.collapseAdditionalID}>
-                                            <FieldArray key="coursearr" name="courses">
+                                        <MDBCollapse id="additionalEducation" isOpen={this.state.collapseAdditionalID}>
+                                            <FieldArray key="coursearr" name="additionalEducation">
                                                 {({ push, remove }) =>
                                                     <Row key="courserow">
-                                                        {values.courses && values.courses.length > 0 && values.courses.map((course, index) =>
+                                                        {values.additionalEducation && values.additionalEducation.length > 0 && values.additionalEducation.map((course, index) =>
                                                             <>
                                                                 <div key={"coursecol1" + index} style={{ marginLeft: "3vmax", marginTop: "5.4vh" }}>
-                                                                    <Field key={"coursefield1" + index} name={`courses[${index}].course`}>
+                                                                    <Field key={"coursefield1" + index} name={`additionalEducation[${index}].certificationLink`}>
                                                                         {({ field, form }) => (
                                                                             <input {...field} key={"courseinput1" + index} onBlur={handleBlur} className="but" type="text" placeholder="Course link" />
                                                                         )}
                                                                     </Field>
                                                                 </div>
                                                                 <div key={"coursecol2" + index} className="uploadBut">
-                                                                    <Field name={`courses[${index}].coursePhoto`} key={"coursefield2" + index} id="course" values={values} index={index} component={Upload} >
+                                                                    <Field name={`additionalEducation[${index}].coursePhoto`} key={"coursefield2" + index} id="certificationLink" values={values} index={index} component={Upload} >
                                                                     </Field>
 
                                                                 </div>
-                                                                {values.courses.length > 1 ? <button key={"courserem" + index} type="button" onClick={() => remove(index)} className="additionalButDel del"><i key="courseremicon" className="fas fa-minus"></i></button> : ''}
+                                                                {values.additionalEducation.length > 1 ? <button key={"courserem" + index} type="button" onClick={() => remove(index)} className="additionalButDel del"><i key="courseremicon" className="fas fa-minus"></i></button> : ''}
                                                             </>
                                                         )}
-                                                        <button type="button" key={"courseadd"} onClick={() => push({ course: '', coursePhoto: [] })} className="additionalButAdd"><i key="courseaddicon" className="fas fa-plus"></i></button>
+                                                        <button type="button" key={"courseadd"} onClick={() => push({ certificationLink: '', coursePhoto: [] })} className="additionalButAdd"><i key="courseaddicon" className="fas fa-plus"></i></button>
                                                     </Row>
                                                 }
                                             </FieldArray>
@@ -470,23 +474,23 @@ export class StudentRegistration extends Component {
                                         <MDBCollapse id="technology" isOpen={this.state.collapseAdditionalID}>
                                             <div className="ownFormStyle" style={{ paddingBottom: "1vw" }}>
                                                 <Dropdown id="additionalDropDown"
-                                                    name='type'
-                                                    value={values.type}
+                                                    name='technologies'
+                                                    value={values.technologies}
                                                     onBlur={(e, { name, value }) => setFieldTouched(name, value)}
                                                     onChange={(e, { name, value }) => setFieldValue(name, value)}
                                                     placeholder='Technologies' fluid multiple selection options={options} />
                                             </div>
                                         </MDBCollapse>
 
-                                        <MDBCollapse id="experience" isOpen={this.state.collapseAdditionalID}>
-                                            <FieldArray name="experience">
+                                        <MDBCollapse id="workExperience" isOpen={this.state.collapseAdditionalID}>
+                                            <FieldArray name="workExperience">
                                                 {({ push, remove }) =>
                                                     <Row className="ownRow">
-                                                        {values.experience && values.experience.length > 0 && values.experience.map((experienc, index) =>
+                                                        {values.workExperience && values.workExperience.length > 0 && values.workExperience.map((experienc, index) =>
                                                             <>
                                                                 <Row className="additionalRow" style={{ marginLeft: "2vw", marginBottom: "1vmax" }}>
                                                                     <div>
-                                                                        <Field name={`experience[${index}].company`}>
+                                                                        <Field name={`workExperience[${index}].company`}>
                                                                             {({ field, form }) => (
                                                                                 <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Company" />
                                                                             )}
@@ -494,14 +498,14 @@ export class StudentRegistration extends Component {
                                                                     </div>
                                                                     <span className="line">|</span>
                                                                     <div>
-                                                                        <Field name={`experience[${index}].position`}>
+                                                                        <Field name={`workExperience[${index}].position`}>
                                                                             {({ field, form }) => (
                                                                                 <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Position" />
                                                                             )}
                                                                         </Field>
                                                                     </div>
                                                                     <span className="ownText" style={{ marginLeft: "2vmax" }}>Company {index + 1}</span>
-                                                                    {values.experience.length > 1 ? <button type="button" onClick={() => remove(index)} className="ownButAdd del"><i className="fas fa-minus"></i></button> : ''}
+                                                                    {values.workExperience.length > 1 ? <button type="button" onClick={() => remove(index)} className="ownButAdd del"><i className="fas fa-minus"></i></button> : ''}
                                                                 </Row>
                                                                 <Row className="additionalRow" style={{ marginLeft: "2vw", marginBottom: "1vmax" }}>
                                                                     <DatePicker
@@ -535,19 +539,6 @@ export class StudentRegistration extends Component {
                                             </FieldArray>
                                         </MDBCollapse>
                                     </div>
-                                    <Recaptcha
-                                        style={{ width: "1vmax" }}
-                                        sitekey="6Le2nREUAAAAALYuOv7X9Fe3ysDmOmghtj0dbCKW"
-                                        render="explicit"
-                                        theme="dark"
-                                        verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
-                                        onloadCallback={() => { console.log("done loading!"); }}
-                                        onBlur={handleBlur}
-                                    />
-                                    {errors.recaptcha
-                                        && touched.recaptcha && (
-                                            <p className="error">{errors.recaptcha}</p>
-                                        )}
                                 </div>
                             </div>
                             <div className="buttonsReg">
