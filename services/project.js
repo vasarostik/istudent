@@ -4,6 +4,12 @@ exports.findByName = projectName => {
     return Project.findOne({ where: { name: projectName } });
 };
 
-exports.create = data => {
-    return Project.create(data);
+exports.create = (student,data) => {
+    return Project.findOne({where:{name:data.name}}).then(project =>{
+        if(project){
+            return project.addStudent(student)
+        }else{
+            return student.createProject(data)
+        }
+    })
 };

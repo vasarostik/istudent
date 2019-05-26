@@ -2,12 +2,11 @@ const Education = require("../database/models").Education;
 const institutionService =  require("./institution");
 const studentService = require("./student");
 
-exports.create = (studentId, data) => {
-    const institution = institutionService.findByName(data.institution);
-    data.institution = institution.id;
-    return studentService.find(studentId).then(student => {
+exports.create = (student, data) => {
+    institutionService.findOrCreate(data.institution).then(institution=>{
+        data.institution = institution.id;
         student.createEducation(data);
-    })
+    });
 };
 
 exports.findByStudent = studentId => {

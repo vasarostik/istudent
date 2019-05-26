@@ -3,6 +3,7 @@ const BearerStrategy = require("passport-http-bearer").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const jwt = require("jsonwebtoken");
+const uuid = require("uuid/v4");
 
 const config = require("./../config/app");
 
@@ -45,7 +46,8 @@ passport.use(
             done(null, user);
           } else {
             User.create({
-              email: profile.emails[0].value
+              email: profile.emails[0].value,
+              password: uuid()
             });
             console.log("User successfully created");
             done(null, user);

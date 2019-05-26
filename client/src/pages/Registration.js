@@ -82,7 +82,7 @@ export class Registration extends Component {
 
 
             if (registered === true) {
-                this.props.history.push(this.props.history.location.pathname.concat('/addInfo'));
+                this.props.history.push('/profile/student');
             }
 
             console.log(getJwt());

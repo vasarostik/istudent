@@ -5,8 +5,6 @@ exports.find = studentId => {
 
 };
 
-exports.create = (studentId, data) => {
-    return studentService.find(studentId).then(student => {
-        return student.createWorkexperience(data);
-    });
+exports.create = (student, data) => {
+    return student.createWorkExperience(data)
 };

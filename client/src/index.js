@@ -21,8 +21,8 @@ ReactDOM.render(
     <AuthenticatedComponent>
       <Route exact path="/" component={Main}/>
       <Route exact path="/profile" component={Profile}/>
-      <Route exact path="/registration/student/addInfo" component={StudentRegistration}/>
-      <Route exact path="/registration/company/addInfo" component={StudentRegistration}/>
+      <Route exact path="/profile/student" component={StudentRegistration}/>
+      <Route exact path="/profile/company" component={StudentRegistration}/>
     </AuthenticatedComponent>
   </Switch>
 </BrowserRouter>, document.getElementById('root'));

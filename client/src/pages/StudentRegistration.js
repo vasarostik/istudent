@@ -9,6 +9,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Formik, Field, Form, FieldArray } from 'formik';
 import { useDropzone } from 'react-dropzone';
 import * as Yup from 'yup';
+import axios from 'axios';
+import { getJwt } from '../helpers/jwt';
 
 const options = [
     { key: 'angular', text: 'Angular', value: 'Angular' },
@@ -30,7 +32,7 @@ const options = [
     { key: 'ui', text: 'UI Design', value: 'UI Design' },
     { key: 'ux', text: 'User Experience', value: 'User Experience' },
 ]
-
+const val =[];
 const initialValues = {
     startDate: new Date(),
     endDate: new Date(),
@@ -57,13 +59,15 @@ const initialValues = {
         achievement: '',
         achievementPhoto: [],
     }],
+    skill: [],
     technologies: [],
     workExperience: [{
         company: '',
         position: '',
+        workFrom: new Date(),
+        workUntil: new Date()
     }],
-    skill: '',
-    recaptcha: "",
+    //skill: '',
 }
 
 const thumb = {
@@ -202,6 +206,7 @@ function Upload(props) {
             </div>
     );
 }
+var indx=0;
 
 export class StudentRegistration extends Component {
     constructor(props) {
@@ -215,14 +220,42 @@ export class StudentRegistration extends Component {
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
 
     }
-    componentDidMount() {
-        const script = document.createElement("script");
-        script.src =
-            "https://www.google.com/recaptcha/api.js";
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-    }
+ 
+    
+    handleSubmit = async (values) => {
+             let success;
+             let token  = getJwt();
+             console.log(JSON.stringify(values));
+             console.log(getJwt());
+            axios.post('/profile/student', JSON.stringify(values), {
+                 headers: {
+                     'Content-Type' : 'application/json',
+                     'Accept' : 'application/json',
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Credentials': 'true',
+                     Authorization: `Bearer ${token}` }
+             }).catch(function (error) {
+                alert(error);
+             }).then(function (response) {
+                console.log('Status: ' + response.status);
+                 if (response !== undefined) {
+                     console.log('Status: ' + response.status);
+                     if (response.status === 201) {
+                        success = true;
+                         console.log('success');
+                     } else {
+                        success = false;
+                         alert('Sorry, try again');
+                     }
+     
+                 }
+             });
+     
+             if (success) {
+                 console.log('redirect');
+                 this.props.history.push('/');
+             }
+         }
 
     render() {
 
@@ -237,6 +270,31 @@ export class StudentRegistration extends Component {
                         values.startDate = this.state.startDate;
                         values.endDate = this.state.endDate;
 
+                        /*
+                        let arr;
+                        let arr1;
+                        let arr2;
+                        Object.keys(values).forEach(function(jB){
+                            arr=values[jB];
+                            console.log(arr);
+                            Object.keys(arr).forEach(function(jB){
+                                arr1=arr[jB];
+                                console.log(arr1);
+                                if(typeof(arr1)==='object'){
+                                    Object.keys(arr1).forEach(function(jB){
+                                        arr2=arr1[jB];
+                                        console.log(typeof(arr2)+"innnner");
+                                    });
+                                }
+                                else {
+                                    val.push(arr1);
+                                }
+                              });
+                          });
+                        
+                         console.log(val);
+                        */
+                        
                         console.log(JSON.stringify({
                             coursePhoto: values.additionalEducation[0].coursePhoto.map(file => ({
                                 fileName: file.name,
@@ -248,10 +306,12 @@ export class StudentRegistration extends Component {
                             2
                         ));
 
-                        console.log(JSON.stringify(values, null, 2));
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                        }, 500);
+                        console.log(JSON.stringify(
+                            values,
+                            null,
+                            2));
+
+                        this.handleSubmit(values);
                     }}
 
                 >
@@ -458,17 +518,14 @@ export class StudentRegistration extends Component {
                                         </MDBCollapse>
 
                                         <MDBCollapse id="skills" isOpen={this.state.collapseAdditionalID}>
-                                            <Row className="ownRow">
-                                                <div>
-                                                    <Field name="skill[0]">
-                                                        {({ field, form }) => (
-                                                            <textarea {...field} onBlur={handleBlur} className="achievementText" placeholder="Write your skills.." />
-                                                        )}
-                                                    </Field>
-                                                    <span className="skillsText">All your good points matter!</span>
-
-                                                </div>
-                                            </Row>
+                                            <div className="ownFormStyle" style={{ paddingBottom: "1vw" }}>
+                                                <Dropdown id="additionalDropDown"
+                                                    name='skill'
+                                                    value={values.skill}
+                                                    onBlur={(e, { name, value }) => setFieldTouched(name, value)}
+                                                    onChange={(e, { name, value }) => setFieldValue(name, value)}
+                                                    placeholder='Skills' fluid multiple selection options={options} />
+                                            </div>
                                         </MDBCollapse>
 
                                         <MDBCollapse id="technology" isOpen={this.state.collapseAdditionalID}>
@@ -510,30 +567,31 @@ export class StudentRegistration extends Component {
                                                                 <Row className="additionalRow" style={{ marginLeft: "2vw", marginBottom: "1vmax" }}>
                                                                     <DatePicker
                                                                         className="but"
-                                                                        selected={this.state.startDate}
+                                                                        selected={values.workExperience[index].workFrom}
                                                                         selectsStart
-                                                                        startDate={this.state.startDate}
-                                                                        endDate={this.state.endDate}
+                                                                        startDate={values.workExperience[index].workFrom}
+                                                                        endDate={values.workExperience[index].workUntil}
                                                                         dateFormat="MM/yyyy"
                                                                         showMonthYearPicker
-                                                                        onChange={this.handleChangeStart}
+                                                                        onChange={(e) => this.handleChangeStart(e,values,index)}
                                                                     />
+                                                                    
                                                                     <span className="line">|</span>
 
                                                                     <DatePicker
                                                                         className="but"
-                                                                        selected={this.state.endDate}
+                                                                        selected={values.workExperience[index].workUntil}
                                                                         selectsEnd
-                                                                        startDate={this.state.startDate}
-                                                                        endDate={this.state.endDate}
+                                                                        startDate={values.workExperience[index].workFrom}
+                                                                        endDate={values.workExperience[index].workUntil}
                                                                         dateFormat="MM/yyyy"
                                                                         showMonthYearPicker
-                                                                        onChange={this.handleChangeEnd}
+                                                                        onChange={(e) => this.handleChangeEnd(e,values,index)}
                                                                     />
                                                                 </Row>
                                                             </>
                                                         )}
-                                                        <button type="button" onClick={() => push({ company: '', position: '' })} className="ownButAdd"><i className="fas fa-plus"></i></button>
+                                                        <button type="button" onClick={() => push({ company: '', position: '',workFrom: new Date(), workUntil: new Date() })} className="ownButAdd"><i className="fas fa-plus"></i></button>
                                                     </Row>
                                                 }
                                             </FieldArray>
@@ -543,7 +601,7 @@ export class StudentRegistration extends Component {
                             </div>
                             <div className="buttonsReg">
                                 <a href="/"><button type="button" className="skipButtonReg">Skip by now</button></a>
-                                <a href="/"><button type="submit" disabled={isSubmitting} className="createButtonReg">Create account</button></a>
+                                <button type="submit" className="createButtonReg">Create account</button>
                             </div>
 
                         </Form>
@@ -559,15 +617,17 @@ export class StudentRegistration extends Component {
             collapseAdditionalID: ((prevState.collapseAdditionalID !== collapseAdditionalID)) ? collapseAdditionalID : ""
         }));
     }
-    handleChangeStart(date) {
+    handleChangeStart(date,values,index) {
         this.setState({
             startDate: date
         });
+        values.workExperience[index].workFrom = date;
     }
 
-    handleChangeEnd(date) {
+    handleChangeEnd(date,values,index) {
         this.setState({
             endDate: date
         });
+        values.workExperience[index].workUntil = date;
     }
 }
