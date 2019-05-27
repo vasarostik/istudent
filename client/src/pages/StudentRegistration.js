@@ -41,11 +41,11 @@ const initialValues = {
         lastName: "",
         city: ""
     },
-    education:{
+    education:[{
         institution: "",
         specialization: "",
         course: ""
-    },
+    }],
     projects: [{
         link: '',
         additionallink: '',
@@ -97,7 +97,7 @@ const SignupSchema = Yup.object().shape({
 
 const onChange = (id, newValue) => {
     console.log(`changed to ${newValue}`);
-    id === 'city' ? initialValues.student.city = newValue : initialValues.education.institution = newValue;
+    id === 'city' ? initialValues.student.city = newValue : initialValues.education[0].institution = newValue;
 }
 
 function Upload(props) {
@@ -227,7 +227,7 @@ export class StudentRegistration extends Component {
              let token  = getJwt();
              console.log(JSON.stringify(values));
              console.log(getJwt());
-            axios.post('/profile/student', JSON.stringify(values), {
+           await axios.post('/profile/student', JSON.stringify(values), {
                  headers: {
                      'Content-Type' : 'application/json',
                      'Accept' : 'application/json',
@@ -247,13 +247,12 @@ export class StudentRegistration extends Component {
                         success = false;
                          alert('Sorry, try again');
                      }
-     
                  }
              });
      
              if (success) {
                  console.log('redirect');
-                 this.props.history.push('/');
+                 this.props.history.push('/profile');
              }
          }
 
@@ -266,7 +265,7 @@ export class StudentRegistration extends Component {
                     validationSchema={SignupSchema}
                     onSubmit={(values) => {
                         values.student.city = initialValues.student.city;
-                        values.education.institution = initialValues.education.institution;
+                        values.education[0].institution = initialValues.education[0].institution;
                         values.startDate = this.state.startDate;
                         values.endDate = this.state.endDate;
 
@@ -369,20 +368,20 @@ export class StudentRegistration extends Component {
                                             <div className="infoRow">
                                                 <AutoSuggest
                                                     id="institution"
-                                                    name="education.institution"
+                                                    name="education[0].institution"
                                                     placeholder="University"
                                                     onBlur={handleBlur}
                                                     onChange={onChange} />
                                             </div>
                                             <div className="infoRow">
-                                                <Field name="education.specialization">
+                                                <Field name="education[0].specialization">
                                                     {({ field, form }) => (
                                                         <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Specialization" />
                                                     )}
                                                 </Field>
                                             </div>
                                             <div className="infoRow">
-                                                <Field name="education.course">
+                                                <Field name="education[0].course">
                                                     {({ field, form }) => (
                                                         <input {...field} onBlur={handleBlur} className="but" type="text" placeholder="Course" />
                                                     )}
