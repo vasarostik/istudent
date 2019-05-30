@@ -37,33 +37,24 @@ const initialValues = {
     startDate: new Date(),
     endDate: new Date(),
     student: {
-        firstName: "",
-        lastName: "",
-        city: ""
+       
     },
     education:[{
-        institution: "",
-        specialization: "",
-        course: ""
+        
     }],
     projects: [{
-        link: '',
-        additionallink: '',
-        projectPhoto: [],
+        
     }],
     additionalEducation: [{
-        certificationLink: '',
-        coursePhoto: [],
+
     }],
     achievements: [{
-        achievement: '',
-        achievementPhoto: [],
+       
     }],
-    skill: [],
+    skills: [],
     technologies: [],
     workExperience: [{
-        company: '',
-        position: '',
+        
         workFrom: new Date(),
         workUntil: new Date()
     }],
@@ -294,16 +285,7 @@ export class StudentRegistration extends Component {
                          console.log(val);
                         */
                         
-                        console.log(JSON.stringify({
-                            coursePhoto: values.additionalEducation[0].coursePhoto.map(file => ({
-                                fileName: file.name,
-                                type: file.type,
-                                size: `${file.size} bytes`
-                            })),
-                        },
-                            null,
-                            2
-                        ));
+                        
 
                         console.log(JSON.stringify(
                             values,
@@ -519,8 +501,8 @@ export class StudentRegistration extends Component {
                                         <MDBCollapse id="skills" isOpen={this.state.collapseAdditionalID}>
                                             <div className="ownFormStyle" style={{ paddingBottom: "1vw" }}>
                                                 <Dropdown id="additionalDropDown"
-                                                    name='skill'
-                                                    value={values.skill}
+                                                    name='skills'
+                                                    value={values.skills}
                                                     onBlur={(e, { name, value }) => setFieldTouched(name, value)}
                                                     onChange={(e, { name, value }) => setFieldValue(name, value)}
                                                     placeholder='Skills' fluid multiple selection options={options} />
