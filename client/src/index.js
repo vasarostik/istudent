@@ -11,6 +11,7 @@ import { Registration } from './pages/Registration';
 import { StudentRegistration } from './pages/StudentRegistration';
 import { Profile } from './pages/Profile';
 import { AuthenticatedComponent } from './components/AuthenticatedComponent';
+import { Vacancies } from './pages/Vacancies'
 
 ReactDOM.render(
 <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Route exact path="/Login" component={Login}/>
     <Route exact path="/registration/student" component={Registration}/>
     <Route exact path="/registration/company" component={Registration}/>
+    <Route exact path="/vacancies" component={Vacancies}/>
     <AuthenticatedComponent>
       <Route exact path="/" component={Main}/>
       <Route exact path="/profile" component={Profile}/>

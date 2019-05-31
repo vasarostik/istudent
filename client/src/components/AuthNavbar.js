@@ -37,7 +37,7 @@ export class AuthNavbar extends Component {
               <MDBNavLink className="link" to="#!"> <span>Courses</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem >
-              <MDBNavLink className="link" to="#!"><span>Vacancies</span></MDBNavLink>
+              <MDBNavLink className="link" to="/vacancies"><span>Vacancies</span></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem className="cont comp hideBlock">
               <h5 className="staticNav t-comp">IT Company</h5>
