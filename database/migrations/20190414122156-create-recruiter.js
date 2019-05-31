@@ -4,11 +4,14 @@ module.exports = {
     return queryInterface.createTable("Recruiters", {
       userID: {
         allowNull: false,
+        autoIncrement: false,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       companyID: {
         allowNull: false,
+        autoIncrement: false,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       createdAt: {

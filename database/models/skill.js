@@ -12,8 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       through: models.StudentSkill,
       foreignKey: "skillID"
     });
-    Skill.hasMany(models.VacancySkill);
-    Skill.hasMany(models.CourseSkill);
+    Skill.belongsToMany(models.Vacancy, {
+      through: models.VacancySkill,
+      foreignKey: "skillID"
+    });
+    Skill.belongsToMany(models.Course, {
+      through: models.CourseSkill,
+      foreignKey: "skillID"
+    });
   };
   return Skill;
 };

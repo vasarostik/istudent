@@ -23,10 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       through: models.CourseTechnology,
       foreignKey: "technologyID"
     });
-    Course.belongsToMany(models.Company, {
-      through: models.CourseTechnology,
-      foreignKey: "companyID"
-    });
+    //Course.belongsToMany(models.Company, {
+    //  through: models.CourseTechnology,
+    //  foreignKey: "companyID"
+    //});
   };
   return Course;
 };

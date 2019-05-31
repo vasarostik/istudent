@@ -19,7 +19,7 @@ export class Registration extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(this.props.history.location)
         const { email, password, confirmPassword } = this.state;
 
         let registered;
@@ -39,6 +39,7 @@ export class Registration extends Component {
                 email: email,
                 password: password
             });
+
 
             await axios.post('http://localhost:5000/reg/student', data, {
 
@@ -82,9 +83,9 @@ export class Registration extends Component {
 
 
             if (registered === true) {
-                this.props.history.push('/profile/student');
+                this.props.history.location.pathname === '/registration/company'? this.props.history.push('/profile/company') : this.props.history.push('/profile/student');
             }
-
+            
             console.log(getJwt());
         }
 

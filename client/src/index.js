@@ -9,6 +9,7 @@ import { Main } from './pages/Main';
 import { Login } from './pages/Login';
 import { Registration } from './pages/Registration';
 import { StudentRegistration } from './pages/StudentRegistration';
+import { CompanyRegistration } from './pages/CompanyRegistration';
 import { Profile } from './pages/Profile';
 import { AuthenticatedComponent } from './components/AuthenticatedComponent';
 import { Vacancies } from './pages/Vacancies'
@@ -24,7 +25,7 @@ ReactDOM.render(
       <Route exact path="/" component={Main}/>
       <Route exact path="/profile" component={Profile}/>
       <Route exact path="/profile/student" component={StudentRegistration}/>
-      <Route exact path="/profile/company" component={StudentRegistration}/>
+      <Route exact path="/profile/company" component={CompanyRegistration}/>
     </AuthenticatedComponent>
   </Switch>
 </BrowserRouter>, document.getElementById('root'));

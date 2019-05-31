@@ -17,21 +17,16 @@ app.use(passport.initialize({}));
 require('./core/passport');
 
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
 // Створюємо маршрути
 app.use("/reg", Routes.registration);
 app.use("/auth", Routes.authorization);
-app.use('/profile', passport.authenticate('bearer', { session: false }), Routes.profile);
-
+app.use("/profile", passport.authenticate('bearer', { session: false }), Routes.profile);
+app.use("/company", passport.authenticate('bearer', { session: false }), Routes.company);
+app.use("/vacancy", passport.authenticate('bearer', { session: false }), Routes.vacancy);
+app.use("/course", passport.authenticate('bearer', { session: false }), Routes.course);
 app.get('/getToken', passport.authenticate('bearer', { session: false }), (req, res) => {
     res.status(200).send('Valid token');
 });
-
 app.listen(configs.port, configs.host, () => {
     console.log(`app now listening for request on ${configs.host}:${configs.port}.`);
 });

@@ -8,7 +8,7 @@ export class Vacancies extends Component {
     render() {
 
         return (
-            <div className="Vacancies">
+            <div className="bodybg">
                 <AuthNavbar style={{ boxShadow: "none" }} />
                 {/* main container */}
                 <div className="vacancies">

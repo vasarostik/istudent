@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Student.associate = function(models) {
-    Student.belongsTo(models.User);
+    Student.belongsTo(models.User, { foreignKey: "id" });
     Student.belongsToMany(models.Project, {
       through: models.StudentProject,
       foreignKey: "studentID"

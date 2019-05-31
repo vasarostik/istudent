@@ -1,4 +1,6 @@
-body{
+.bodybg{
+    position: absolute;
+    top:0;
     width: 100vw;
     height: 100vh;
     background-color: #f5f8fd;
