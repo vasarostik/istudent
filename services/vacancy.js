@@ -29,34 +29,36 @@ exports.getAllVacancies = () => {
 };
 
 exports.findByData = data => {
-  let filterList = [
-    {
-      model: Position,
-      where: {
-        name: data.position
+  var filterList = [];
+  if(data.position){
+      filterList.push({
+          model: Position,
+              where: {
+          name: data.position
       }
-    },
-    {
-      model: Company,
-      where: {
-        name: data.company
-      }
-    },
-    {
-      model: Skill,
-      where: {
-        name: data.skill
-      }
-    }
-  ];
+      })
+  }else{
+      filterList.push({
+          model : Position
+      })
+  }
 
-  filterList = filterList.filter(
-    item => !!item.where.name && !!item.where.name.length
-  );
+  if(data.company){
+      filterList.push({
+          model: Company,
+          where: {
+              name: data.company
+          }
+      })
+  }else{
+      filterList.push({
+          model : Company
+      })
+  }
 
-  return Vacancy.findAll({
-    include: filterList
-  });
+return Vacancy.findAll({
+  include: filterList
+});
 };
 
 exports.delete = vacancyId => {

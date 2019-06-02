@@ -20,7 +20,7 @@ ReactDOM.render(
     <Route exact path="/Login" component={Login}/>
     <Route exact path="/registration/student" component={Registration}/>
     <Route exact path="/registration/company" component={Registration}/>
-    <Route exact path="/vacancies" component={Vacancies}/>
+      <Route exact path="/vacancies" component={Vacancies}/>
     <AuthenticatedComponent>
       <Route exact path="/" component={Main}/>
       <Route exact path="/profile" component={Profile}/>
