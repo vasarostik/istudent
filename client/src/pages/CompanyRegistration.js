@@ -256,7 +256,7 @@ export class CompanyRegistration extends Component {
      
              if (success) {
                  console.log('redirect');
-                 this.props.history.push('/profile');
+                 this.props.history.push('/');
              }
          }
 

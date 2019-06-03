@@ -37,8 +37,8 @@ export class Vacancies extends Component {
                                     <p style={{ float: 'right', color: '#78cc1f' }}>Company<span style={{ paddingLeft: '65px', marginRight: '42px' }}>$</span></p>
                                 </div>
                                 <div style={{ marginLeft: '10px', marginTop: '5vh', paddingBottom: '5vh' }}>
-                                    <Card.Title style={{ float: 'left' }}>{vac.Position.name}</Card.Title>
-                                    <Card.Title style={{ float: 'right', textTransform: 'uppercase' }}>{vac.Company.name}<span style={{ paddingLeft: '76px', marginRight: '10px  ' }}>{vac.salaryFrom} - {vac.salaryTo}</span></Card.Title>
+                                    <Card.Title style={{ float: 'left' ,fontSize: '14px'}}>{vac.Position.name}</Card.Title>
+                                    <Card.Title style={{ float: 'right', textTransform: 'uppercase', fontSize: '14px' }}>{vac.Company.name}<span style={{ paddingLeft: '76px', marginRight: '10px  ' }}>{vac.salaryFrom} - {vac.salaryTo}</span></Card.Title>
                                 </div>
                                 <p style={{ margin: '0 10px', fontWeight: '600', fontSize: '16px', float: 'left', color: '#78cc1f' }}>required skills</p>
                                 <ul className="reqs" style={{ marginTop: '5vh', marginLeft: '-25px' }}>
