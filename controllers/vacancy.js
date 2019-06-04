@@ -13,16 +13,14 @@ exports.createVacancy = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  vacancyService.getAllVacancies().then(vacancies => {
-    res.send(vacancies);
-  });
-};
-
-exports.findVacancyByData = (req, res) => {
   if (req.body.filter) {
-    vacancyService.findByData(req.body.filter).then(vacancies => {
-      res.send(vacancies);
-    });
+      vacancyService.findByData(req.body.filter).then(vacancies => {
+          res.send(vacancies);
+      });
+  } else {
+      vacancyService.getAllVacancies().then(vacancies => {
+          res.send(vacancies);
+      });
   }
 };
 

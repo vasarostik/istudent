@@ -20,12 +20,12 @@ ReactDOM.render(
     <Route exact path="/Login" component={Login}/>
     <Route exact path="/registration/student" component={Registration}/>
     <Route exact path="/registration/company" component={Registration}/>
-    <Route exact path="/vacancies" component={Vacancies}/>
     <AuthenticatedComponent>
       <Route exact path="/" component={Main}/>
       <Route exact path="/profile" component={Profile}/>
       <Route exact path="/profile/student" component={StudentRegistration}/>
       <Route exact path="/profile/company" component={CompanyRegistration}/>
+      <Route exact path="/vacancies" component={Vacancies}/>
     </AuthenticatedComponent>
   </Switch>
 </BrowserRouter>, document.getElementById('root'));

@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const vacancy = require("../controllers/vacancy");
-router.get("/", vacancy.findAll);
-// router.post("/", vacancy.findVacancyByData);
+router.post("/", vacancy.findAll);
 // router.put("/",vacancy.updateVacancy);
 // router.delete("/", vacancy.deleteVacancy());
 
