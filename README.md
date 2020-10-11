@@ -5,7 +5,7 @@ Changed user model. Added new modules, controllers and routes. Implemented passw
 
 Use this command to install modules:  
 ```
-npm install  
+npm install (npm i)  
 npm run client-install
 
 sequelize db:create  
